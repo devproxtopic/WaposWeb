@@ -39,7 +39,7 @@ class VerificationApiController extends Controller
 
     public function resend(Request $request)
     {
-        if ($request->user()->hasVerifiedEmail()) {
+        if ($request->user()->hasVerifiedEmail() != '') {
             return response()->json('El usuario ya se encuentra verificado.', 422);
         }
 
