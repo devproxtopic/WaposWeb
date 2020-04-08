@@ -64,7 +64,7 @@ class AuthController extends ResponseController
             $user->access_token = json_encode($success['token']);
             $user->save();
 
-            dd($user->sendApiEmailVerificationNotification());
+            $user->sendApiEmailVerificationNotification();
 
             $success['message'] = "Usuario registrado exitosamente. Se ha enviado un correo para que verifique su cuenta.";
 
