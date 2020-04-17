@@ -32,30 +32,8 @@ class UserController extends Controller
      */
 
      public function updateGeneralData(User $user, UserGeneralRequest $request){
-        $country = Country::where('name', $request->country)->first();
-
-        if(! $country){
-            $country = Country::create(['name' => $request->country]);
-        }
-
-        $city = City::where('name', $request->city)
-            ->where('country_id', $country->id)->first();
-
-        if(! $city){
-            $city = City::create(['name' => $request->city, 'country_id' => $country->id]);
-        }
-
-        $profession = Profession::where('name', $request->profession)->first();
-
-        if(! $profession){
-            $profession = Profession::create(['name' => $request->profession]);
-        }
 
         $user->update($request->all());
-
-        $user->country_id = $country->id;
-        $user->city_id = $city->id;
-        $user->profession_id = $profession->id;
         $user->save();
 
         return back()->with('user', $user)
@@ -63,6 +41,15 @@ class UserController extends Controller
 
     }
 
+    public function dashboardProductsDataView(){
+        $user = User::find(Auth::id());
+        return view('users.products', compact('user'));
+    }
+
+    public function dashboardBusinessDataView(){
+        $user = User::find(Auth::id());
+        return view('users.businesses', compact('user'));
+    }
     /**
      * Vista para editar contraseña conocida
      */

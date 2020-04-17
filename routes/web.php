@@ -23,11 +23,16 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/general-data', 'UserController@generalDataView');
     Route::get('/admin-data', 'UserController@adminDataView');
+    Route::get('/dashboard/products', 'UserController@dashboardProductsDataView');
+    Route::get('/dashboard/businesses', 'UserController@dashboardBusinessDataView');
     Route::get('/edit-password', 'UserController@editPassword');
     Route::post('/update-password', 'UserController@updatePassword');
 
     Route::put('/update-general-data/{user}', 'UserController@updateGeneralData')
         ->name('update.general_users');
+
+
+    
 
     Route::put('/update-admin-data/{user}', 'UserController@updateAdminData')
         ->name('update.admin_users');
