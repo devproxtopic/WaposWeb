@@ -25,14 +25,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin-data', 'UserController@adminDataView');
     Route::get('/dashboard/products', 'UserController@dashboardProductsDataView');
     Route::get('/dashboard/businesses', 'UserController@dashboardBusinessDataView');
+    Route::get('/dashboard/myBusiness', 'BusinessController@index');
     Route::get('/edit-password', 'UserController@editPassword');
     Route::post('/update-password', 'UserController@updatePassword');
 
     Route::put('/update-general-data/{user}', 'UserController@updateGeneralData')
         ->name('update.general_users');
 
+    Route::post('/dashboard/business/create', 'BusinessController@store');
+    Route::post('/dashboard/business/update', 'BusinessController@update');
+    Route::post('/dashboard/products/create', 'ProductController@store');
 
-    
 
     Route::put('/update-admin-data/{user}', 'UserController@updateAdminData')
         ->name('update.admin_users');

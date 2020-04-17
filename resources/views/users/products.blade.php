@@ -9,7 +9,7 @@
             <div class="card">
                 <div class="card-header">Datos Generales</div>
                 <div class="card-body">
-                    <form id="general_users" method="POST" action="{{ route('update.general_users', Auth::id()) }}">
+                    <form id="general_users" method="POST" action="{{ url('/dashboard/products/create')}}">
                         @csrf
                         <div class="form-group row">
                             <label for="country_id" class="col-md-4 col-form-label text-md-right">Nombre producto/servicio</label>

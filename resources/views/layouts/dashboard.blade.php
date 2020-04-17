@@ -51,7 +51,9 @@
           </li>
           <h3 class="menu-title">Negocios</h3><!-- /.menu-title -->
           <li class="active">
-            <a href="{{ url('/dashboard/businesses') }}"> <i class="menu-icon fa fa-arrow-up"></i>Nombre negocio</a>
+            <a href="{{ url('/dashboard/myBusiness')}}"> <i class="menu-icon fa fa-arrow-up"></i>Ver</a>
+            <a href="{{ url('dashboard/businesses')}}"> <i class="menu-icon fa fa-arrow-up"></i>Registrar nuevo</a>
+
           </li>
 
           <h3 class="menu-title">Pos</h3><!-- /.menu-title -->
@@ -98,24 +100,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script>
-    (function($) {
-      "use strict";
 
-      jQuery('#vmap').vectorMap({
-        map: 'world_en',
-        backgroundColor: null,
-        color: '#ffffff',
-        hoverOpacity: 0.7,
-        selectedColor: '#1de9b6',
-        enableZoom: true,
-        showTooltip: true,
-        values: sample_data,
-        scaleColors: ['#1de9b6', '#03a9f5'],
-        normalizeFunction: 'polynomial'
-      });
-    })(jQuery);
-  </script>
 
 </body>
 
