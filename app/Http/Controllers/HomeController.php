@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Business;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,6 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('users.general');
+        $count = Business::all()->toArray();
+        if ($count){
+            $business = 1;
+        }else{
+            $business = 0;
+        }
+        return view('users.general',['business'=>$business]);
     }
 }

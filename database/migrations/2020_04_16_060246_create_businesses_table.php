@@ -28,6 +28,7 @@ class CreateBusinessesTable extends Migration
             $table->string('phone', 100);
             $table->string('email', 100);
             $table->string('pin', 10);
+            $table->string('pin_confirmation', 10);
             $table->integer('status')->default(0);
             $table->unsignedBigInteger('client_id');
             $table->foreign('client_id')->references('id')->on('users');

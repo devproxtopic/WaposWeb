@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('title', 100);
             $table->string('description', 100);
             $table->string('price', 100);
+            $table->string('sku')->unique;
             $table->unsignedBigInteger('business_id');
             $table->foreign('business_id')->references('id')->on('businesses');
         });

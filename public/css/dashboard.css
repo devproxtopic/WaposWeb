@@ -1001,7 +1001,7 @@ textarea {
   width: 100%; }
 
 aside.left-panel {
-  background: #272c33;
+  background: #238b5e;
   display: table-cell;
   height: 100vh;
   min-height: 100%;
@@ -1012,7 +1012,7 @@ aside.left-panel {
   transition: width 0.3s ease; }
 
 .navbar {
-  background: #272c33;
+  background: #238b5e;
   border-radius: 0;
   border: none;
   display: block;
@@ -1023,8 +1023,7 @@ aside.left-panel {
     text-align: center;
     width: 100%; }
   .navbar .navbar-brand {
-    border-bottom: 1px solid #4e4e52;
-    color: #f1f2f7 !important;
+    color: #fff !important;
     font-family: 'Open Sans';
     font-size: 22px;
     float: none;
@@ -1048,19 +1047,20 @@ aside.left-panel {
     .navbar .navbar-brand span {
       font-weight: 600; }
     .navbar .navbar-brand img {
-      max-width: 160px; }
+      max-width: 250px; }
     .navbar .navbar-brand.hidden {
       display: none; }
   .navbar .menu-title {
-    border-bottom: 1px solid #4e4e52;
-    color: #9496a1;
+    border-bottom: 1px solid #d7d9e3 ;
+    border-top: 1px solid #d7d9e3 ;
+    color: #d7d9e3;
     clear: both;
     display: block;
     font-family: 'Open Sans';
     font-size: 14px;
     font-weight: 700;
-    line-height: 50px;
-    padding: 15px 0 0;
+    line-height: 40px;
+   
     text-transform: uppercase;
     width: 100%; }
   .navbar .navbar-nav {
@@ -1081,17 +1081,18 @@ aside.left-panel {
         font-family: 'Open Sans';
         font-size: 14px;
         line-height: 30px;
-        padding: 10px 0;
+        margin-bottom: 2px;
         position: relative;
         width: 100%; }
         .navbar .navbar-nav li > a:hover,
         .navbar .navbar-nav li > a:hover .menu-icon {
           color: #fff !important; }
         .navbar .navbar-nav li > a .menu-icon {
-          color: #8b939b;
+          color: #d7d9e3;
           float: left;
           margin-top: 8px;
-          width: 55px;
+          margin-right: 1em;
+          width: 1.5em;
           text-align: left;
           z-index: 9; }
         .navbar .navbar-nav li > a .menu-title-text {
@@ -1121,7 +1122,7 @@ aside.left-panel {
           .navbar .navbar-nav li.menu-item-has-children a:hover:before {
             color: #fff; }
         .navbar .navbar-nav li.menu-item-has-children .sub-menu {
-          background: #272c33;
+          background: #238b5e;
           border: none;
           box-shadow: none;
           overflow-y: hidden;
@@ -1267,7 +1268,7 @@ body.open .navbar .navbar-brand.hidden {
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease; }
   .right-panel .breadcrumbs {
-    background-color: #fff;
+    background-color: #A8E5C7;
     display: inline-block;
     margin-top: 0;
     padding: 0 5px;
@@ -1278,7 +1279,7 @@ body.open .navbar .navbar-brand.hidden {
     min-height: 50px;
     margin: 0;
     padding: 0 15px;
-    background: #ffffff;
+    background: #A8E5C7;
     border-bottom: 0; }
     .right-panel .page-header h1 {
       font-size: 18px;
@@ -1286,7 +1287,7 @@ body.open .navbar .navbar-brand.hidden {
     .right-panel .page-header .breadcrumb {
       margin: 0;
       padding: 13.5px 0;
-      background: #fff;
+      background: #A8E5C7;
       text-transform: capitalize; }
     .right-panel .page-header .breadcrumb > li + li:before {
       padding: 0 5px;
@@ -1294,7 +1295,7 @@ body.open .navbar .navbar-brand.hidden {
       content: "/\00a0"; }
 
 .right-panel header.header {
-  background: #fff;
+  background: #A8E5C7;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15);
   clear: both;
   display: inline-block;
@@ -1329,7 +1330,7 @@ header.fixed-top {
 .search-trigger {
   background: transparent;
   border: none;
-  color: #272c33;
+  color: #238b5e;
   cursor: pointer;
   font-size: 16px;
   height: 41px;
@@ -1394,7 +1395,7 @@ header .form-inline {
   .header-left .dropdown .dropdown-toggle {
     background: transparent;
     border: none;
-    color: #272c33;
+    color: #238b5e;
     font-size: 16px; }
     .header-left .dropdown .dropdown-toggle:after {
       display: none; }
@@ -1411,7 +1412,7 @@ header .form-inline {
     .header-left .dropdown .dropdown-toggle:active, .header-left .dropdown .dropdown-toggle:focus, .header-left .dropdown .dropdown-toggle:visited {
       background: none !important;
       border-color: transparent !important;
-      color: #272c33 !important; }
+      color: #238b5e !important; }
   .header-left .dropdown .dropdown-menu {
     background: #fff;
     border: none;
@@ -1423,7 +1424,7 @@ header .form-inline {
       margin: 0;
       padding: 5px 15px; }
     .header-left .dropdown .dropdown-menu .dropdown-item {
-      color: #272c33;
+      color: #238b5e;
       font-size: 13px;
       padding: 10px 15px 3px;
       text-overflow: ellipsis; }
@@ -1482,7 +1483,7 @@ header .form-inline {
     z-index: 999;
     min-width: 150px; }
     .user-area .user-menu .nav-link {
-      color: #272c33;
+      color: #238b5e;
       display: block;
       font-size: 14px;
       line-height: 22px;
@@ -2316,14 +2317,14 @@ header .form-inline {
     border-radius: 0 !important; }
     .dataTables_paginate .pagination li a {
       border-radius: 0 !important;
-      color: #272c33; }
+      color: #238b5e; }
     .dataTables_paginate .pagination li.active a {
-      background: #272c33;
-      border-color: #272c33;
+      background: #238b5e;
+      border-color: #238b5e;
       color: #fff; }
     .dataTables_paginate .pagination li:hover a {
-      background: #272c33;
-      border-color: #272c33;
+      background: #238b5e;
+      border-color: #238b5e;
       color: #fff; }
 
 @media (max-width: 1368px) {
@@ -2460,3 +2461,8 @@ header .form-inline {
         .right-panel .content #bootstrap-data-table_wrapper .table td,
         .right-panel .content #bootstrap-data-table_wrapper .table th {
           padding: 5px; } }
+
+
+#subtitle-dashboard-wapos {
+  color: #238B5E !important
+}
