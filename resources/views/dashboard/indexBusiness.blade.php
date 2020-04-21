@@ -5,9 +5,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h1>Mi negocio</h1>
+            <h1 id="subtitle-dashboard-wapos">Mi negocio</h1>
             <div class="card">
-                <div class="card-header">Información básica</div>
+                <div class="card-header" >Información básica</div>
                 <div class="card-body">
                     <form id="" method="POST" action="{{ url('/dashboard/business/update') }}">
                         @csrf

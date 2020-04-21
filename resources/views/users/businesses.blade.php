@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-            <h1>Mis negocios</h1>
+            <h1 id="subtitle-dashboard-wapos">Mis negocios</h1>
             <div class="card">
                 <div class="card-header">Registrar un nuevo negocio</div>
                 <div class="card-body">

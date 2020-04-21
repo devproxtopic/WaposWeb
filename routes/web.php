@@ -24,8 +24,22 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/general-data', 'UserController@generalDataView');
     Route::get('/admin-data', 'UserController@adminDataView');
     Route::get('/dashboard/products', 'UserController@dashboardProductsDataView');
-    Route::get('/dashboard/businesses', 'UserController@dashboardBusinessDataView');
     Route::get('/dashboard/myBusiness', 'BusinessController@index');
+    Route::get('/dashboard/banks', 'BusinessController@dashboardBusinessBankView');
+    Route::get('/dashboard/settings', 'BusinessController@dashboardSettingsView');
+    Route::get('/dashboard/files', 'BusinessController@dashboardFilesView');
+    Route::get('/dashboard/transactions', 'BusinessController@dashboardTransactionsView');
+    Route::get('/dashboard/pos', 'BusinessController@dashboardPOSView');
+    Route::get('/dashboard/BankInformation', 'BusinessController@dashboardBankDataView');
+    Route::get(' /dashboard/clients', 'BusinessController@dashboardClientsView');
+
+   
+
+    Route::get('/dashboard/Security', 'BusinessController@dashboardSecurityView');
+
+    Route::get('/dashboard/transactions/success', 'BusinessController@successTransactionsView');
+    Route::get('/dashboard/transactions/failed', 'BusinessController@failedTransactionsView');
+
     Route::get('/edit-password', 'UserController@editPassword');
     Route::post('/update-password', 'UserController@updatePassword');
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\City;
 use App\Country;
 use App\Http\Requests\UserGeneralRequest;
+use App\Product;
 use App\Profession;
 use App\User;
 use Carbon\Carbon;
@@ -43,13 +44,10 @@ class UserController extends Controller
 
     public function dashboardProductsDataView(){
         $user = User::find(Auth::id());
-        return view('users.products', compact('user'));
+        $products = Product::all();
+        return view('users.products', ['user'=>$user,'products'=>$products]);
     }
 
-    public function dashboardBusinessDataView(){
-        $user = User::find(Auth::id());
-        return view('users.businesses', compact('user'));
-    }
     /**
      * Vista para editar contraseña conocida
      */
