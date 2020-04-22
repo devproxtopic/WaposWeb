@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/transactions', 'BusinessController@dashboardTransactionsView');
     Route::get('/dashboard/pos', 'BusinessController@dashboardPOSView');
     Route::get('/dashboard/BankInformation', 'BusinessController@dashboardBankDataView');
-    Route::get(' /dashboard/clients', 'BusinessController@dashboardClientsView');
+    Route::get(' /dashboard/clients', 'BuyerController@dashboardClientsView');
 
    
 
@@ -48,7 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/dashboard/business/create', 'BusinessController@store');
     Route::post('/dashboard/business/update', 'BusinessController@update');
-    Route::post('/dashboard/products/create', 'ProductController@store');
+    Route::post('/dashboard/clients/create', 'BuyerController@store');
 
 
     Route::put('/update-admin-data/{user}', 'UserController@updateAdminData')
