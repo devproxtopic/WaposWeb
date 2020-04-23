@@ -126,10 +126,22 @@
           $phoneUser = $('#phone').val();
           console.log($phoneUser);
         }
-
-
-
       });
+
+
+      $('.country-select').change(function() {
+        if ($('.country-select').val() == 'ugy') {
+          $('#acta').text("Tarjeta de RUT");
+          $('#cedula').text("Constancia BPS");
+          console.log("pulso uruguay")
+        }
+        if ($('.country-select').val() == 'mxn') {
+          $('#acta').text("Acta constitutiva");
+          $('#cedula').text("Cedula Fiscal");
+          console.log("pulso Mexico")
+        }
+      });
+
       var table = $('#datatable').DataTable();
       table.on('click', '.edit', function() {
         $tr = $(this).closest('tr');
@@ -176,6 +188,23 @@
 
 
       $('#PagarModal').modal('show');
+
+    });
+
+
+
+    var table = $('#clients-table').DataTable();
+    table.on('click', '.pagar', function() {
+      $tr = $(this).closest('tr');
+      if ($($tr).hasClass('child')) {
+        $tr = $tr.prev('.parent');
+      }
+
+      var data = table.row($tr).data();
+      console.log(data);
+      
+
+      $('#transaction-client').modal('show');
 
     });
   </script>
