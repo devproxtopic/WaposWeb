@@ -32,7 +32,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get(' /dashboard/simulator', 'BusinessController@dashboardSimulatorView');
     Route::get('/dashboard/settings', 'BusinessController@dashboardSettingsView');
     Route::get('/dashboard/files', 'BusinessController@dashboardFilesView');
-    Route::get('/dashboard/transactions', 'BusinessController@dashboardTransactionsView');
+    Route::get('/dashboard/transactions', 'OrderController@dashboardTransactionsView');
+    Route::post('/dashboard/transactions/create', 'OrderController@createTransaction');
     Route::get('/dashboard/pos', 'BusinessController@dashboardPOSView');
     Route::get('/dashboard/BankInformation', 'BusinessController@dashboardBankDataView');
     Route::get(' /dashboard/clients', 'BuyerController@dashboardClientsView');

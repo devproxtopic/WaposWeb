@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Business;
 use App\Buyer;
-use App\Order;
+
 use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -71,10 +71,7 @@ class BusinessController extends Controller
         return view('dashboard.files');
     }
 
-    public function dashboardTransactionsView(){
-        $transactions = Order::all();
-        return view('dashboard.transactions',['transactions'=>$transactions]);
-    }
+   
     public function dashboardPOSView(){
         $buyers = Buyer::all();
         $products = Product::all();
