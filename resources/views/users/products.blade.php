@@ -66,6 +66,13 @@
                         </div>
 
                        
+                        <div class="form-group row">
+                            <label for="image-product" id="image-product" class="col-md-4 col-form-label text-md-right">Subir Imagen</label>
+
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-success save-general-user">+Archivo</button>
+                            </div>
+                        </div>
 
 
                         <div class="form-group row mb-0">
