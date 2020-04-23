@@ -9,6 +9,6 @@ class Order extends Model
     //public $timestamps = false;
  
     protected $fillable = [
-        'product_id', 'buyer_id', 'concept', 'amount','payment_type','date','transaction_status','ordernumber','created_at','updated_at'
+        'product_id', 'buyer_id', 'concept', 'amount','payment_type','date','transaction_status','ordernumber'
     ];
 }

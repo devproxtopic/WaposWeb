@@ -166,11 +166,13 @@
       var data = table.row($tr).data();
       console.log(data);
       $('#name').val(data[2]);
-      $('#ordernumber').text("23453");
+      $('#orderno').text("23453");
+      $('#ordernumber').val("23453");
       $('#ladanumber').val("+52");
       $('#phone').val("4443184173");
       $('#currency').val("MXN");
-      $('#price').val(data[3]);
+      $('#amount').val(data[3]);
+      $('#transaction_status').val(data[4]);
 
 
       $('#PagarModal').modal('show');
