@@ -31,7 +31,6 @@
                                     <option value="ugy" name="buyer_id">Uruguay</option>
                                 </select>
                             </div>
-
                         </div>
 
                         <div class="form-group row">
@@ -59,10 +58,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="country_id" class="col-md-4 col-form-label text-md-right">Notas</label>
+                            <label for="notas" class="col-md-4 col-form-label text-md-right">Notas</label>
 
-                            <div class="col-md-6">
-                                <textarea class="col-md-6 "></textarea>
+                            <div class="col-md-8">
+                                <textarea  id="notas"></textarea>
                             </div>
                         </div>
 
