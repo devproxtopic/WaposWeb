@@ -8,6 +8,6 @@ class Buyer extends Model
 {
     public $timestamps = false;
     protected $fillable = [
-        'lastname', 'name', 'phone', 'date_of_birth',
+        'lastname', 'name', 'phone', 'date_of_birth','ladanumber'
     ];
 }

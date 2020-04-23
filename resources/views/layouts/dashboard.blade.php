@@ -16,13 +16,18 @@
   <link rel="shortcut icon" href="{{ URL::asset('')}}" />
   <title>WAPOS</title>
 
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/9a331721e8.js" crossorigin="anonymous"></script>
+
 
   <link rel="stylesheet" href="{{ URL::asset('css/dashboard.css')}}">
   <script src="https://kit.fontawesome.com/9a331721e8.js" crossorigin="anonymous"></script>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
 </head>
 
 <body>
@@ -47,6 +52,8 @@
           <li class="active">
             <a href="{{ url('/dashboard/pos') }}"> <img class="menu-icon" src="{{ URL::asset('images/pos.png')}}" alt="Logo">POS</a>
             <a href="{{ url('/dashboard/transactions') }}"> <img class="menu-icon" src="{{ URL::asset('images/transaction.png')}}" alt="Logo">Transacciones</a>
+            <a href="{{ url('/dashboard/simulator') }}"> <img class="menu-icon" src="{{ URL::asset('images/transaction.png')}}" alt="Logo">Simulador de pago</a>
+
           </li>
 
           <h3 class="menu-title">Mi Negocio</h3><!-- /.menu-title -->
@@ -105,9 +112,63 @@
   <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
+  <script type="text/javascript">
+    $(document).ready(function() {
+      $('.client-select').change(function() {
+        if ($('.client-select').val() == '0') {
+          console.log("pulso el registrar")
+          $nombreUser = $('#name').val();
+          $lastNameUser = $('#lastname').val();
+          $ladaUser = $('#lada').val();
+          $phoneUser = $('#phone').val();
+          console.log($phoneUser);
+        } 
 
 
+
+      });
+      var table = $('#datatable').DataTable();
+      table.on('click','.edit' ,function() {
+          $tr = $(this).closest('tr');
+          if ($($tr).hasClass('child')){
+            $tr = $tr.prev('.parent');
+          }
+
+          var data = table.row($tr).data();
+          console.log(data);
+          $userFields = JSON.parse(data[6]);
+          $productFields = JSON.parse(data[7]);
+
+          $('#product_id').val(data[3]);
+          $('#ordernumber').text(data[1]);
+          $('#name').val($userFields["name"]); 
+          $('#phone').val($userFields["phone"]); 
+          $('#product_name').val($productFields["title"]);
+          $('#currency').val($productFields["currency"]);
+          $('#description').val($productFields["description"]);
+          $('#price').val('$'+$productFields["price"]);
+          console.log($productFields);
+          $('#editModal').modal('show');
+      });
+    });
+
+
+    var table = $('#simulator-table').DataTable();
+      table.on('click','.pagar' ,function() {
+          $tr = $(this).closest('tr');
+          if ($($tr).hasClass('child')){
+            $tr = $tr.prev('.parent');
+          }
+
+          var data = table.row($tr).data();
+          console.log(data);
+          
+          $('#PagarModal').modal('show');
+      
+    });
+  </script>
 </body>
-
 </html>
