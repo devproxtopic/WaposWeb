@@ -125,50 +125,134 @@
           $ladaUser = $('#lada').val();
           $phoneUser = $('#phone').val();
           console.log($phoneUser);
-        } 
+        }
 
 
 
       });
       var table = $('#datatable').DataTable();
-      table.on('click','.edit' ,function() {
-          $tr = $(this).closest('tr');
-          if ($($tr).hasClass('child')){
-            $tr = $tr.prev('.parent');
-          }
+      table.on('click', '.edit', function() {
+        $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child')) {
+          $tr = $tr.prev('.parent');
+        }
 
-          var data = table.row($tr).data();
-          console.log(data);
-          $userFields = JSON.parse(data[6]);
-          $productFields = JSON.parse(data[7]);
+        var data = table.row($tr).data();
+        console.log(data);
+        $userFields = JSON.parse(data[6]);
+        $productFields = JSON.parse(data[7]);
 
-          $('#product_id').val(data[3]);
-          $('#ordernumber').text(data[1]);
-          $('#name').val($userFields["name"]); 
-          $('#phone').val($userFields["phone"]); 
-          $('#product_name').val($productFields["title"]);
-          $('#currency').val($productFields["currency"]);
-          $('#description').val($productFields["description"]);
-          $('#price').val('$'+$productFields["price"]);
-          console.log($productFields);
-          $('#editModal').modal('show');
+        $('#product_id').val(data[3]);
+        $('#ordernumber').text(data[1]);
+        $('#name').val($userFields["name"]);
+        $('#phone').val($userFields["phone"]);
+        $('#product_name').val($productFields["title"]);
+        $('#currency').val($productFields["currency"]);
+        $('#description').val($productFields["description"]);
+        $('#price').val('$' + $productFields["price"]);
+        console.log($productFields);
+        $('#editModal').modal('show');
       });
     });
 
 
     var table = $('#simulator-table').DataTable();
-      table.on('click','.pagar' ,function() {
-          $tr = $(this).closest('tr');
-          if ($($tr).hasClass('child')){
-            $tr = $tr.prev('.parent');
-          }
+    table.on('click', '.pagar', function() {
+      $tr = $(this).closest('tr');
+      if ($($tr).hasClass('child')) {
+        $tr = $tr.prev('.parent');
+      }
 
-          var data = table.row($tr).data();
-          console.log(data);
-          
-          $('#PagarModal').modal('show');
-      
+      var data = table.row($tr).data();
+      console.log(data);
+      $('#name').val(data[2]);
+      $('#ordernumber').text("23453");
+      $('#ladanumber').val("+52");
+      $('#phone').val("4443184173");
+      $('#currency').val("MXN");
+      $('#price').val(data[3]);
+
+
+      $('#PagarModal').modal('show');
+
     });
   </script>
+  <script>
+    function checkNumberCard(e) {
+      tecla = (document.all) ? e.keyCode : e.which;
+
+      //Tecla de retroceso para borrar, siempre la permite
+      if (tecla == 8) {
+        return true;
+      }
+
+      var value = document.getElementById('card-number').value;
+      if (value.length > 15) {
+        return false; // keep form from submitting
+      }
+      // Patron de entrada, en este caso solo acepta numeros y letras
+      patron = /[0-9]/;
+      tecla_final = String.fromCharCode(tecla);
+      return patron.test(tecla_final);
+    }
+
+    function checkCVC(e) {
+      tecla = (document.all) ? e.keyCode : e.which;
+
+      //Tecla de retroceso para borrar, siempre la permite
+      if (tecla == 8) {
+        return true;
+      }
+
+      var value = document.getElementById('cvc').value;
+      if (value.length > 2) {
+        return false; // keep form from submitting
+      }
+      // Patron de entrada, en este caso solo acepta numeros y letras
+      patron = /[0-9]/;
+      tecla_final = String.fromCharCode(tecla);
+      return patron.test(tecla_final);
+    }
+
+
+    function checkMonth(e) {
+      tecla = (document.all) ? e.keyCode : e.which;
+
+      //Tecla de retroceso para borrar, siempre la permite
+      if (tecla == 8) {
+        return true;
+      }
+
+      var value = document.getElementById('month').value;
+      if (value.length > 1) {
+        return false; // keep form from submitting
+      }
+      // Patron de entrada, en este caso solo acepta numeros y letras
+      patron = /[0-9]/;
+      tecla_final = String.fromCharCode(tecla);
+      return patron.test(tecla_final);
+    }
+    function checkYear(e) {
+      tecla = (document.all) ? e.keyCode : e.which;
+
+      //Tecla de retroceso para borrar, siempre la permite
+      if (tecla == 8) {
+        return true;
+      }
+
+      var value = document.getElementById('year').value;
+      if (value.length > 1) {
+        return false; // keep form from submitting
+        
+      } 
+    
+      // Patron de entrada, en este caso solo acepta numeros y letras
+      patron = /[0-9]/;
+      tecla_final = String.fromCharCode(tecla);
+      return patron.test(tecla_final);
+    }
+    
+  </script>
 </body>
+
 </html>
