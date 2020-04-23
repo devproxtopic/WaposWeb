@@ -101,6 +101,7 @@
                             <th scope="col">Descripcion</th>
                             <th scope="col">SKU</th>
                             <th scope="col">Precio</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -110,6 +111,7 @@
                             <td>{{$product->description}}</td>
                             <td>{{$product->sku}}</td>
                             <td>{{$product->price}}</td>
+                            <td><a class="btn btn-success ver-img">Ver img</a></td>
                         </tr>
                         @endforeach
                       
