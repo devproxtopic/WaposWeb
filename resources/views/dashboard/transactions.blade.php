@@ -77,16 +77,16 @@
 
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <input type="text" class="form-control" name="name" id="name"  placeholder="Nombre del cliente" required autofocus>
+                            <input  disabled type="text" class="form-control" name="name" id="name"  placeholder="Nombre del cliente" required autofocus>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <div class="col-md-4">
-                            <input type="text" class="form-control" name="ladanumber" id="ladanumber" placeholder="lada" required autofocus>
+                            <input type="text" disabled class="form-control" name="ladanumber" id="ladanumber" placeholder="lada" required autofocus>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="phone" id="phone"  placeholder="phone" required autofocus>
+                            <input type="text"  disabled class="form-control" name="phone" id="phone"  placeholder="phone" required autofocus>
                         </div>
                     </div>
 
@@ -95,13 +95,13 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <input type="text" class="form-control" name="product_name" id="product_name" placeholder="Nombre del producto" required autofocus>
+                            <input type="text" disabled class="form-control" name="product_name" id="product_name" placeholder="Nombre del producto" required autofocus>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <textarea type="text" class="form-control" name="description" id="description" required autofocus></textarea>
+                            <textarea type="text" disabled class="form-control" name="description" id="description" required autofocus></textarea>
                         </div>
                     </div>
 
@@ -110,10 +110,10 @@
                     </div>
                     <div class="form-group row">
                         <div class="col-md-3">
-                            <input type="text" class="form-control" name="currency" id="currency" placeholder="currency" required autofocus>
+                            <input type="text" disabled class="form-control" name="currency" id="currency" placeholder="currency" required autofocus>
                         </div>
                         <div class="col-md-3">
-                            <input type="text" class="form-control" name="price" id="price" placeholder="price" required autofocus>
+                            <input type="text"  disabled class="form-control" name="price" id="price" placeholder="price" required autofocus>
                         </div>
                     </div>
 
