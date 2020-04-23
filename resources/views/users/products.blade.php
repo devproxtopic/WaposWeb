@@ -46,6 +46,21 @@
                             </div>
                         </div>
 
+                        <div class="form-group row">
+                            <label for="currency" class="col-md-4 col-form-label text-md-right">Currency</label>
+
+                            <div class="col-md-6">
+                            <select name="currency" class="form-control client-select" >
+                                    <option value="mxn" >Pesos Mexicanos</option>
+                                    <option value="uyu" >Pesos Uruguayos</option>
+                                    <option value="usd" >Dólares Americanos</option>
+                                </select>                            
+                            </div>
+                        </div>
+
+                       
+
+
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4 text-right">
                                 <button type="submit" class="btn btn-success save-general-user">

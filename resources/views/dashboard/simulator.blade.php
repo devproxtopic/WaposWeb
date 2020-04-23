@@ -8,41 +8,30 @@
             <div class="card">
 
                 <div class="card-header">
-                    <h3 id="subtitle-dashboard-wapos">Transacciones</h3>
+                    <h3 id="subtitle-dashboard-wapos">Simulador de pago</h3>
                 </div>
 
                 <div class="card-body" style="color: green">
-                    <table class="table" id="datatable" >
+                    <table class="table" id="simulator-table" >
                         <thead class="table">
                             <th scope="col">Fecha</th>
                             <th scope="col">Orden</th>
                             <th scope="col">Cliente</th>
-                            <th scope="col">Producto</th>
                             <th scope="col">Monto</th>
                             <th scope="col">Estatus</th>
-                            <th scope="col">Info</th>
-                            <th style="display:none;">Info</th>
-                            <th style="display:none;">Info</th>
+                            <th ></th>
 
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($transactions as $transaction)
                             <tr>
-                                <td>{{$transaction->created_at}}</td>
-                                <td>{{$transaction->ordernumber}}</td>
-                                <td>{{$transaction->buyer_id}}</td>
-                                <td>{{$transaction->product_id}}</td>
-                                <td>{{$transaction->amount}}</td>
-                                <td>{{$transaction->transaction_status}}</td>
-                                <td style="display:none;">{{getFullName($transaction->buyer_id)}}</td>
-                                <td style="display:none;">{{getProductInformation($transaction->product_id)}}</td>
-                                <td><a class="badge badge-success edit">Info</a></td>
-
+                                <td>14/06/20</td>
+                                <td>87347</td>
+                                <td>John Doe</td>
+                                <td>$120.00 MXN</td>
+                                <td style="color: orange">En proceso</td>
+                                <td><a class="btn btn-success pagar">Pagar</a></td>
                             </tr>
-                            @endforeach
-
-
                         </tbody>
                     </table>
                 </div>
@@ -53,11 +42,11 @@
 </div>
 
 
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="PagarModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Detalle de transacción</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Realizar pago</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
@@ -90,20 +79,7 @@
                         </div>
                     </div>
 
-                    <div class="form-group row ">
-                        <label for="country_id" class="col-md-4 col-form-label ">Producto</label>
-                    </div>
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <input type="text" class="form-control" name="product_name" id="product_name" placeholder="Nombre del producto" required autofocus>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-md-12">
-                            <textarea type="text" class="form-control" name="description" id="description" required autofocus></textarea>
-                        </div>
-                    </div>
+            
 
                     <div class="form-group row ">
                         <label for="country_id" class="col-md-4 col-form-label ">Precio</label>
@@ -116,7 +92,40 @@
                             <input type="text" class="form-control" name="price" id="price" placeholder="price" required autofocus>
                         </div>
                     </div>
+                    <div class="form-group row ">
+                        <label for="titular" class="col-md-12 col-form-label ">Nombre del titular de la tarjeta</label>
+                    </div>
 
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" name="titular-card" id="titular"  placeholder="Escriba el titular de la tarjeta" required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group row ">
+                        <label for="card-number" class="col-md-12 col-form-label ">Número de la tarjeta</label>
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" name="card-number" id="card-number"  placeholder="Inserte los dígitos de su tarjeta" required autofocus>
+                        </div>
+                    </div>
+
+                    <div class="form-group row ">
+                        <label for="vto" class="col-md-6 col-form-label ">Fecha Vencimiento</label>
+                        <label for="cvc" class="col-md-4 col-form-label ">CVC</label>
+
+                    </div>
+
+                    <div class="form-group row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="vto" id="vto"  placeholder="09/09" required autofocus>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" name="cvc" id="cvc"  placeholder="000" required autofocus>
+                        </div>
+                    </div>
 
 
 

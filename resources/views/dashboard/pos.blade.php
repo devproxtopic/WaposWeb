@@ -16,13 +16,13 @@
                         @csrf
                         <div class="form-group row">
                             <label for="buyer_id" class="col-md-4 col-form-label text-md-right">Cliente</label>
-
+                        
                             <div class="col-md-6">
                                 <select name="buyer_id" class="form-control client-select" >
                                     <option value="select" name="buyer_id">Seleccionar</option>
                                     <option value="0" name="buyer_id">Registrar nuevo cliente</option>
                                     @foreach($buyers as $buyer)
-                                    <option value="{{$buyer->id}}" name="buyer_id">{{$buyer->name}}</option>
+                                    <option value="{{$buyer->id}}" name="buyer_id"  > {{$buyer->name}}  </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -32,7 +32,7 @@
                             <label for="product_id" class="col-md-4 col-form-label text-md-right">Nombre</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Escriba el nombre del cliente" required autofocus>
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Escriba el nombre del cliente"  required autofocus>
                             </div>
                         </div>
 
@@ -49,9 +49,9 @@
                             <label for="product_id" class="col-md-4 col-form-label text-md-right">Teléfono</label>
 
                             <div class="col-md-2">
-                            <select name="lada" class="form-control client-select" >
-                                    <option value="mxn" name="buyer_id">México +52</option>
-                                    <option value="ugy" name="buyer_id">Uruguay +59</option>
+                            <select name="lada"  id="lada" class="form-control client-select" >
+                                    <option value="+52">México +52</option>
+                                    <option value="+59">Uruguay +59</option>
                                 </select>                            
                             </div>
                             <div class="col-md-4">
@@ -76,7 +76,7 @@
                             <label for="product_id" class="col-md-4 col-form-label text-md-right">Producto</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Nombre del producto*" required autofocus>
+                                <input type="text" class="form-control" name="title" id="title" placeholder="Nombre del producto*" required autofocus>
                             </div>
                         </div>
 

@@ -57,7 +57,7 @@ return [
 
     'from' => [
         'address' => env('MAIL_FROM_ADDRESS', 'eff@proxtopic.com'),
-        'name' => env('MAIL_FROM_NAME', 'EFF Proxtopic'),
+        'name' => env('MAIL_FROM_NAME', 'WAPOS'),
     ],
 
     /*

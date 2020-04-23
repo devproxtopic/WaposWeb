@@ -90,6 +90,10 @@ class BusinessController extends Controller
         return view('dashboard.security');
 
     }
+
+    public function dashboardSimulatorView(){
+        return view('dashboard.simulator');
+    }
    
 
     

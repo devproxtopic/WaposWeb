@@ -52,6 +52,8 @@
           <li class="active">
             <a href="{{ url('/dashboard/pos') }}"> <img class="menu-icon" src="{{ URL::asset('images/pos.png')}}" alt="Logo">POS</a>
             <a href="{{ url('/dashboard/transactions') }}"> <img class="menu-icon" src="{{ URL::asset('images/transaction.png')}}" alt="Logo">Transacciones</a>
+            <a href="{{ url('/dashboard/simulator') }}"> <img class="menu-icon" src="{{ URL::asset('images/transaction.png')}}" alt="Logo">Simulador de pago</a>
+
           </li>
 
           <h3 class="menu-title">Mi Negocio</h3><!-- /.menu-title -->
@@ -116,9 +118,17 @@
   <script type="text/javascript">
     $(document).ready(function() {
       $('.client-select').change(function() {
-        if ($('.client-select').val() == 'select') {
-          console.log("pulso el select")
-        }
+        if ($('.client-select').val() == '0') {
+          console.log("pulso el registrar")
+          $nombreUser = $('#name').val();
+          $lastNameUser = $('#lastname').val();
+          $ladaUser = $('#lada').val();
+          $phoneUser = $('#phone').val();
+          console.log($phoneUser);
+        } 
+
+
+
       });
       var table = $('#datatable').DataTable();
       table.on('click','.edit' ,function() {
@@ -143,6 +153,21 @@
           console.log($productFields);
           $('#editModal').modal('show');
       });
+    });
+
+
+    var table = $('#simulator-table').DataTable();
+      table.on('click','.pagar' ,function() {
+          $tr = $(this).closest('tr');
+          if ($($tr).hasClass('child')){
+            $tr = $tr.prev('.parent');
+          }
+
+          var data = table.row($tr).data();
+          console.log(data);
+          
+          $('#PagarModal').modal('show');
+      
     });
   </script>
 </body>
