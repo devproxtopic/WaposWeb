@@ -14,7 +14,7 @@ class AddLadanumberUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('ladanumber', 5);
+            $table->string('ladanumber', 5)->nullable();
         });
     }
 
