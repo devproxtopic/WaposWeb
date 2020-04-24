@@ -24,7 +24,7 @@ class UserController extends Controller
       public function generalDataView(){
         $user = User::find(Auth::id());
 
-        return view('users.general', compact('user'));
+        return redirect('users.general', compact('user'));
       }
 
 

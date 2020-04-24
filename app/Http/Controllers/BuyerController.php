@@ -19,6 +19,7 @@ class BuyerController extends Controller
         $buyer->name = $request['name'];
         $buyer->lastname = $request['lastname'];
         $buyer->phone = $request['phone'];
+        $buyer->ladanumber = $request['ladanumber'];
         $buyer->date_of_birth = $request['date_of_birth'];
         $buyer->save();
         return redirect('/dashboard/clients');

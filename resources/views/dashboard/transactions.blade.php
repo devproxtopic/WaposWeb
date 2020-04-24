@@ -31,11 +31,11 @@
                             <tr>
                                 <td>{{$transaction->created_at}}</td>
                                 <td>{{$transaction->ordernumber}}</td>
-                                <td>{{$transaction->buyer_id}}</td>
-                                <td>{{$transaction->product_id}}</td>
+                                <td>{{getFullName($transaction->buyer_id)}}</td>
+                                <td>{{getProductName($transaction->product_id)}}</td>
                                 <td>{{$transaction->amount}}</td>
                                 <td>{{$transaction->transaction_status}}</td>
-                                <td style="display:none;">{{getFullName($transaction->buyer_id)}}</td>
+                                <td style="display:none;">{{getFullBuyer($transaction->buyer_id)}}</td>
                                 <td style="display:none;">{{getProductInformation($transaction->product_id)}}</td>
                                 <td><a class="badge badge-success edit">Info</a></td>
 

@@ -44,7 +44,7 @@
                             <label for="phone" class="col-md-4 col-form-label text-md-right">Teléfono</label>
 
                             <div class="col-md-2">
-                            <select name="ladanumber"  id="ladanumber" class="form-control client-select" >
+                            <select name="ladanumber"  id="ladanumber" class="form-control" >
                                     <option value="+52">MEX +52</option>
                                     <option value="+59">UY +59</option>
                                 </select>                            

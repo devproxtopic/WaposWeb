@@ -34,7 +34,7 @@
                             <label for="product_id" class="col-md-4 col-form-label text-md-right">Precio</label>
 
                             <div class="col-md-4">
-                            <select name="currency" class="form-control client-select" >
+                            <select name="currency" class="form-control" >
                                     <option value="mxn" name="buyer_id">Pesos Mexicanos</option>
                                     <option value="ugy" name="buyer_id">Pesos Uruguayos</option>
                                     <option value="usd" name="buyer_id">Dólares Americanos</option>
@@ -49,7 +49,7 @@
                             <label for="country_id" class="col-md-4 col-form-label text-md-right">SKU</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="sku" id="sku" required autofocus>
+                                <input type="number" class="form-control" name="sku" id="sku" required autofocus>
                             </div>
                         </div>
 
@@ -57,7 +57,7 @@
                             <label for="currency" class="col-md-4 col-form-label text-md-right">Currency</label>
 
                             <div class="col-md-6">
-                            <select name="currency" class="form-control client-select" >
+                            <select name="currency" class="form-control" >
                                     <option value="mxn" >Pesos Mexicanos</option>
                                     <option value="uyu" >Pesos Uruguayos</option>
                                     <option value="usd" >Dólares Americanos</option>
@@ -70,7 +70,7 @@
                             <label for="image-product" id="image-product" class="col-md-4 col-form-label text-md-right">Subir Imagen</label>
 
                             <div class="col-md-6">
-                                <button type="button" class="btn btn-success save-general-user">+Archivo</button>
+                                <input type="file"  class="form-control-plaintext" name="image-product">
                             </div>
                         </div>
 

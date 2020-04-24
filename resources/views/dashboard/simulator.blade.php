@@ -30,15 +30,15 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td name="date">14/06/20</td>
-                                <td name="ordernumber">87347</td>
-                                <td name="buyer_id">John Doe</td>
-                                <td name="amount">$120.00 MXN</td>
-                                <td style="color: orange" name="transaction_status">en proceso</td>
-                                <td name="concept">Concepto de compra</td>
-                                <td name="product_id" style="display:none;">1</td>
-                                <td name="payment_type" style="display:none;">credito</td>
-                                <td style="display:none;">{{getFullName(1)}}</td>
+                                <td>14/06/20</td>
+                                <td >87347</td>
+                                <td>John Doe</td>
+                                <td >$120.00 MXN</td>
+                                <td style="color: orange">en proceso</td>
+                                <td >Concepto de compra</td>
+                                <td style="display:none;">1</td>
+                                <td style="display:none;">credito</td>
+                                <td style="display:none;">{{getFullBuyer(2)}}</td>
                                 <td style="display:none;">{{getProductInformation(1)}}</td>
                                 <td><a class="btn btn-success pagar">Pagar</a></td>
                             </tr>

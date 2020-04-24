@@ -35,7 +35,7 @@
                             <label for="product_id" class="col-md-4 col-form-label text-md-right">Teléfono</label>
 
                             <div class="col-md-2">
-                                <select name="ladanumber" id="ladanumber" class="form-control client-select">
+                                <select name="ladanumber" id="ladanumber" class="form-control">
                                     <option value="+52">México +52</option>
                                     <option value="+59">Uruguay +59</option>
                                 </select>
@@ -94,7 +94,7 @@
                                 <td>{{$buyer->lastname}}</td>
                                 <td>{{$buyer->phone}}</td>
                                 <td>{{$buyer->date_of_birth}}</td>
-                                <td><a class="btn btn-success pagar">Transacciones</a></td>
+                                <td><a class="btn btn-success transacciones">Transacciones</a></td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -116,7 +116,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <table class="table" id="simulator-table">
+                <table class="table">
                     <thead class="table">
                         <th scope="col">Fecha</th>
                         <th scope="col">Orden</th>

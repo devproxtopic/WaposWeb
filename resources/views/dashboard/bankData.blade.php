@@ -18,7 +18,7 @@
                             <label for="Country" class="col-md-4 col-form-label text-md-right">País</label>
 
                             <div class="col-md-4">
-                                <select name="currency" class="form-control country-select">
+                                <select name="currency" class="form-control">
                                     <option value="mxn">México</option>
                                     <option value="ugy">Uruguay</option>
                                 </select>
@@ -29,7 +29,7 @@
                             <label for="bank" class="col-md-4 col-form-label text-md-right">Banco</label>
 
                             <div class="col-md-4">
-                                <select name="currency" class="form-control country-select">
+                                <select name="currency" class="form-control">
                                     <option value="santander">Santander</option>
                                     <option value="hsbc">HSBC</option>
                                     <option value="bbva">BBVA</option>

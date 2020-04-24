@@ -49,7 +49,7 @@
                             <label for="product_id" class="col-md-4 col-form-label text-md-right">Teléfono</label>
 
                             <div class="col-md-2">
-                            <select name="lada"  id="lada" class="form-control client-select" >
+                            <select name="lada"  id="lada" class="form-control " >
                                     <option value="+52">México +52</option>
                                     <option value="+59">Uruguay +59</option>
                                 </select>                            
@@ -84,7 +84,7 @@
                             <label for="product_id" class="col-md-4 col-form-label text-md-right">Precio</label>
 
                             <div class="col-md-4">
-                            <select name="currency" class="form-control client-select" >
+                            <select name="currency" class="form-control" >
                                     <option value="mxn" name="buyer_id">Pesos Mexicanos</option>
                                     <option value="ugy" name="buyer_id">Pesos Uruguayos</option>
                                     <option value="usd" name="buyer_id">Dólares Americanos</option>

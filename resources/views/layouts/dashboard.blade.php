@@ -119,12 +119,10 @@
     $(document).ready(function() {
       $('.client-select').change(function() {
         if ($('.client-select').val() == '0') {
-          console.log("pulso el registrar")
           $nombreUser = $('#name').val();
           $lastNameUser = $('#lastname').val();
           $ladaUser = $('#lada').val();
           $phoneUser = $('#phone').val();
-          console.log($phoneUser);
         }
       });
 
@@ -170,21 +168,14 @@
 
     var table = $('#simulator-table').DataTable();
     table.on('click', '.pagar', function() {
-      $tr = $(this).closest('tr');
-      if ($($tr).hasClass('child')) {
-        $tr = $tr.prev('.parent');
-      }
+        $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child')) {
+          $tr = $tr.prev('.parent');
+        }
 
       var data = table.row($tr).data();
       console.log(data);
-      $('#name').val(data[2]);
-      $('#orderno').text("23453");
-      $('#ordernumber').val("23453");
-      $('#ladanumber').val("+52");
-      $('#phone').val("4443184173");
-      $('#currency').val("MXN");
-      $('#amount').val(data[3]);
-      $('#transaction_status').val(data[4]);
+    
 
 
       $('#PagarModal').modal('show');
@@ -194,7 +185,7 @@
 
 
     var table = $('#clients-table').DataTable();
-    table.on('click', '.pagar', function() {
+    table.on('click', '.transacciones', function() {
       $tr = $(this).closest('tr');
       if ($($tr).hasClass('child')) {
         $tr = $tr.prev('.parent');
