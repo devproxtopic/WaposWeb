@@ -30,15 +30,15 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>14/06/20</td>
+                                <td >14/06/20</td>
                                 <td >87347</td>
-                                <td>John Doe</td>
+                                <td >John Doe</td>
                                 <td >$120.00 MXN</td>
                                 <td style="color: orange">en proceso</td>
                                 <td >Concepto de compra</td>
                                 <td style="display:none;">1</td>
                                 <td style="display:none;">credito</td>
-                                <td style="display:none;">{{getFullBuyer(2)}}</td>
+                                <td style="display:none;">{{getFullName(1)}}</td>
                                 <td style="display:none;">{{getProductInformation(1)}}</td>
                                 <td><a class="btn btn-success pagar">Pagar</a></td>
                             </tr>
@@ -67,7 +67,7 @@
                     <div class="form-group row">
                         <label class="col-md-5 col-form-label"></label>
                         <label class="col-md-3 col-form-label">Orden No.</label>
-                        <label for="orderno" class="form-control" name="orderno" id="orderno" class="col-md-2 col-form-label text-align-right"></label>
+                        <label for="ordernumber" name="orderno" id="orderno" class="col-md-2 col-form-label text-align-right"></label>
                     </div>
 
                     <div class="form-group row ">
@@ -138,16 +138,14 @@
                             <input type="text" class="form-control" name="cvc" id="cvc" onkeypress="return checkCVC(event)" placeholder="000" required autofocus>
                         </div>
                     </div>
+
                     <input type="text" class="form-control" name="product_id"value="2" style="display:none;" class="col-md-4 col-form-label ">
                     <input type="text" class="form-control" name="buyer_id" value="2" style="display:none;" class="col-md-4 col-form-label ">
                     <input type="text" class="form-control" name="concept" value="producto importado" style="display:none;" class="col-md-4 col-form-label ">
                     <input type="text" class="form-control" name="payment_type" value="credito" style="display:none;" class="col-md-4 col-form-label ">
                     <input type="text" class="form-control" name="date" value="2020-04-22 17:54:28"  style="display:none;" class="col-md-4 col-form-label ">
-                    <input type="text" class="form-control" name="transaction_status" id="transaction_status"  style="display:none;" class="col-md-4 col-form-label ">
+                    <input type="text" class="form-control" name="transaction_status" value ="complete"id="transaction_status"  style="display:none;" class="col-md-4 col-form-label ">
                     <input type="text" class="form-control" name="ordernumber" id="ordernumber"  style="display:none;" class="col-md-4 col-form-label ">
-
-
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-success">Save changes</button>

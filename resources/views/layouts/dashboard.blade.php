@@ -166,16 +166,22 @@
     });
 
 
-    var table = $('#simulator-table').DataTable();
-    table.on('click', '.pagar', function() {
-        $tr = $(this).closest('tr');
-        if ($($tr).hasClass('child')) {
-          $tr = $tr.prev('.parent');
-        }
+    var tableSimulator = $('#simulator-table').DataTable();
+    tableSimulator.on('click', '.pagar', function() {
+      $tr = $(this).closest('tr');
+      if ($($tr).hasClass('child')) {
+        $tr = $tr.prev('.parent');
+      }
 
-      var data = table.row($tr).data();
+      var data = tableSimulator.row($tr).data();
       console.log(data);
-    
+      $('#name').val(data[2]);
+      $('#ordernumber').val(data[2]); 
+      $('#ladanumber').val("+52"); //cambiar cuando si se lea la transaccion del data
+      $('#phone').val("4443184173");
+      $('#currency').val("MXN");
+      $('#price').val(data[3]);
+      $('#amount').val(data[3]);
 
 
       $('#PagarModal').modal('show');
