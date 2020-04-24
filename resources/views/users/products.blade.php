@@ -5,7 +5,6 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-12">
-
             <div class="card">
                 <div class="card-header">
                 <h3 id="subtitle-dashboard-wapos">Registrar producto</h3>    
@@ -13,7 +12,7 @@
 
                 <div class="card-body">
 
-                    <form id="general_users" method="POST" action="{{ url('/dashboard/products/create')}}">
+                    <form id="general_users" method="POST" action="{{ url('/dashboard/products/create')}}" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group row">
                             <label for="country_id" class="col-md-4 col-form-label text-md-right">Nombre producto/servicio</label>
@@ -32,12 +31,20 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="country_id" class="col-md-4 col-form-label text-md-right">Precio</label>
+                            <label for="product_id" class="col-md-4 col-form-label text-md-right">Precio</label>
 
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="price" id="price" required autofocus>
+                            <div class="col-md-4">
+                            <select name="currency" class="form-control client-select" >
+                                    <option value="mxn" name="buyer_id">Pesos Mexicanos</option>
+                                    <option value="ugy" name="buyer_id">Pesos Uruguayos</option>
+                                    <option value="usd" name="buyer_id">Dólares Americanos</option>
+                                </select>                            
+                            </div>
+                            <div class="col-md-2">
+                                <input type="text" class="form-control" name="price" id="price" placeholder="9,999.99" required autofocus>
                             </div>
                         </div>
+
                         <div class="form-group row">
                             <label for="country_id" class="col-md-4 col-form-label text-md-right">SKU</label>
 
@@ -59,6 +66,13 @@
                         </div>
 
                        
+                        <div class="form-group row">
+                            <label for="image-product" id="image-product" class="col-md-4 col-form-label text-md-right">Subir Imagen</label>
+
+                            <div class="col-md-6">
+                                <button type="button" class="btn btn-success save-general-user">+Archivo</button>
+                            </div>
+                        </div>
 
 
                         <div class="form-group row mb-0">
@@ -87,6 +101,7 @@
                             <th scope="col">Descripcion</th>
                             <th scope="col">SKU</th>
                             <th scope="col">Precio</th>
+                            <th scope="col"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -96,6 +111,7 @@
                             <td>{{$product->description}}</td>
                             <td>{{$product->sku}}</td>
                             <td>{{$product->price}}</td>
+                            <td><a class="btn btn-success ver-img">Ver img</a></td>
                         </tr>
                         @endforeach
                       
