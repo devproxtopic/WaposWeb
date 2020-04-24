@@ -36,7 +36,7 @@
 
                             <div class="col-md-2">
                                 <select name="ladanumber" id="ladanumber" class="form-control">
-                                    <option value="0">Select</option>
+                                    <option value="00">Select</option>
                                     <option value="+52">México +52</option>
                                     <option value="+59">Uruguay +59</option>
                                 </select>

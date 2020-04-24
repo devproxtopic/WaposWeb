@@ -15,6 +15,7 @@ class BuyerController extends Controller
     }
     
     public function store(Request $request){
+
         $buyer = new Buyer();
         $buyer->name = $request['name'];
         $buyer->lastname = $request['lastname'];
