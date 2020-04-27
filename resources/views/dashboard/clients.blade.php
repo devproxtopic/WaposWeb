@@ -42,7 +42,7 @@
                                 </select>
                             </div>
                             <div class="col-md-4">
-                                <input type="text" class="form-control" name="phone" id="phone" placeholder="Número*" required autofocus>
+                                <input type="number" class="form-control" name="phone" onkeypress="return checkPhoneNumber(event)"  id="phone-number-client" placeholder="Número*" required autofocus>
                             </div>
                         </div>
 

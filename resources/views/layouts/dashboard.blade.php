@@ -299,6 +299,25 @@
       tecla_final = String.fromCharCode(tecla);
       return patron.test(tecla_final);
     }
+
+
+    function checkPhoneNumber(e) {
+      tecla = (document.all) ? e.keyCode : e.which;
+
+      //Tecla de retroceso para borrar, siempre la permite
+      if (tecla == 8) {
+        return true;
+      }
+
+      var value = document.getElementById('phone-number-client').value;
+      if (value.length > 9) {
+        return false; // keep form from submitting
+      }
+      // Patron de entrada, en este caso solo acepta numeros y letras
+      patron = /[0-9]/;
+      tecla_final = String.fromCharCode(tecla);
+      return patron.test(tecla_final);
+    }
   </script>
 </body>
 
