@@ -90,7 +90,7 @@
                                 <th scope="col">SKU</th>
                                 <th scope="col">Precio</th>
                                 <th style="display:none;"></th>
-                                <th scope="col"></th>
+                                <th scope="col">Imagen</th>
 
                             </tr>
                         </thead>
@@ -101,8 +101,13 @@
                                 <td>{{$product->description}}</td>
                                 <td>{{$product->sku}}</td>
                                 <td>{{$product->price}}</td>
-                                <td style="display:none;">{{ asset('storage/uploads/CUVUlWJDSTLDS4BC0hQQVgLBTkQgE4HmBIvfIC07.jpeg') }}</td>
+                                @if($product->image)
+                                <td style="display:none;">{{ asset('storage/'.$product->image) }}</td>
                                 <td><a class="btn btn-success imagenDetail">Ver img</a></td>
+                                @else
+                                <td style="display:none;"></td>
+                                <td><a class="btn btn-warning disabled">No disponible</a></td>
+                                @endif
                             </tr>
                             @endforeach
                         </tbody>
@@ -131,7 +136,7 @@
                 <div class="row">
                     <label id="description-product"></label>
                 </div>
-                <img src="{{ asset('storage/uploads/CUVUlWJDSTLDS4BC0hQQVgLBTkQgE4HmBIvfIC07.jpeg') }}" id="imageProduct" style="width: 200px; height: 264px;">
+                <img src="" id="imageProduct" style="width: 200px; height: 264px;">
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
