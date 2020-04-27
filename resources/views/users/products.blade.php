@@ -7,15 +7,16 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header">
-                <h3 id="subtitle-dashboard-wapos">Registrar producto</h3>    
+                    <h3 id="subtitle-dashboard-wapos">Registrar producto</h3>
                 </div>
 
                 <div class="card-body">
 
                     <form id="general_users" method="POST" action="{{ url('/dashboard/products/create')}}" enctype="multipart/form-data">
                         @csrf
+
                         <div class="form-group row">
-                            <label for="country_id" class="col-md-4 col-form-label text-md-right">Nombre producto/servicio</label>
+                            <label for="title" class="col-md-4 col-form-label text-md-right">Nombre producto/servicio</label>
 
                             <div class="col-md-6">
                                 <input type="text" class="form-control" name="title" id="title" required autofocus>
@@ -23,7 +24,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="country_id" class="col-md-4 col-form-label text-md-right">Descripción</label>
+                            <label for="description" class="col-md-4 col-form-label text-md-right">Descripción</label>
 
                             <div class="col-md-6">
                                 <textarea type="text" class="form-control" name="description" id="description" required autofocus></textarea>
@@ -34,11 +35,11 @@
                             <label for="product_id" class="col-md-4 col-form-label text-md-right">Precio</label>
 
                             <div class="col-md-4">
-                            <select name="currency" class="form-control" >
-                                    <option value="mxn" name="buyer_id">Pesos Mexicanos</option>
-                                    <option value="ugy" name="buyer_id">Pesos Uruguayos</option>
-                                    <option value="usd" name="buyer_id">Dólares Americanos</option>
-                                </select>                            
+                                <select name="currency" class="form-control">
+                                    <option value="mxn">Pesos Mexicanos</option>
+                                    <option value="ugy">Pesos Uruguayos</option>
+                                    <option value="usd">Dólares Americanos</option>
+                                </select>
                             </div>
                             <div class="col-md-2">
                                 <input type="text" class="form-control" name="price" id="price" placeholder="9,999.99" required autofocus>
@@ -46,7 +47,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="country_id" class="col-md-4 col-form-label text-md-right">SKU</label>
+                            <label for="sku" class="col-md-4 col-form-label text-md-right">SKU</label>
 
                             <div class="col-md-6">
                                 <input type="number" class="form-control" name="sku" id="sku" required autofocus>
@@ -54,23 +55,10 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="currency" class="col-md-4 col-form-label text-md-right">Currency</label>
+                            <label for="image-product" class="col-md-4 col-form-label text-md-right">Subir Imagen</label>
 
                             <div class="col-md-6">
-                            <select name="currency" class="form-control" >
-                                    <option value="mxn" >Pesos Mexicanos</option>
-                                    <option value="uyu" >Pesos Uruguayos</option>
-                                    <option value="usd" >Dólares Americanos</option>
-                                </select>                            
-                            </div>
-                        </div>
-
-                       
-                        <div class="form-group row">
-                            <label for="image-product" id="image-product" class="col-md-4 col-form-label text-md-right">Subir Imagen</label>
-
-                            <div class="col-md-6">
-                                <input type="file"  class="form-control-plaintext" name="image-product">
+                                <input type="file" class="form-control-plaintext" name="image-product">
                             </div>
                         </div>
 
@@ -89,39 +77,68 @@
 
             <div class="card">
                 <div class="card-header">
-                <h3 id="subtitle-dashboard-wapos">Productos</h3>    
+                    <h3 id="subtitle-dashboard-wapos">Productos</h3>
                 </div>
 
                 <div class="card-body">
 
-                <table class="table">
-                    <thead class="table">
-                        <tr>
-                            <th scope="col">Nombre</th>
-                            <th scope="col">Descripcion</th>
-                            <th scope="col">SKU</th>
-                            <th scope="col">Precio</th>
-                            <th scope="col"></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach($products as $product)
-                        <tr>
-                            <td>{{$product->title}}</td>
-                            <td>{{$product->description}}</td>
-                            <td>{{$product->sku}}</td>
-                            <td>{{$product->price}}</td>
-                            <td><a class="btn btn-success ver-img">Ver img</a></td>
-                        </tr>
-                        @endforeach
-                      
-                    </tbody>
-                </table>
+                    <table class="table" id="table-products-img">
+                        <thead class="table">
+                            <tr>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Descripcion</th>
+                                <th scope="col">SKU</th>
+                                <th scope="col">Precio</th>
+                                <th style="display:none;"></th>
+                                <th scope="col"></th>
 
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($products as $product)
+                            <tr>
+                                <td>{{$product->title}}</td>
+                                <td>{{$product->description}}</td>
+                                <td>{{$product->sku}}</td>
+                                <td>{{$product->price}}</td>
+                                <td style="display:none;">{{ asset('storage/uploads/CUVUlWJDSTLDS4BC0hQQVgLBTkQgE4HmBIvfIC07.jpeg') }}</td>
+                                <td><a class="btn btn-success imagenDetail">Ver img</a></td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
     </div>
 </div>
-@endsection
 
+<div class="modal fade" id="detailImage" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <label>
+                        <h3 id="name-product"></h3>
+                    </label>
+                </div>
+                <div class="row">
+                    <label id="description-product"></label>
+                </div>
+                <img src="{{ asset('storage/uploads/CUVUlWJDSTLDS4BC0hQQVgLBTkQgE4HmBIvfIC07.jpeg') }}" id="imageProduct" style="width: 200px; height: 264px;">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+@endsection

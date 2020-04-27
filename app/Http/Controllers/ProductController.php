@@ -16,8 +16,11 @@ class ProductController extends Controller
         $product->price = $request['price'];
         $product->sku = $request['sku'];
         $product->currency = $request['currency'];
+        if( $request->hasFile('image-product') ){
+            $file = $request->file('image-product')->store('uploads','public');
+            $product->image = $file;
+        }
         $business = Business::where('client_id','=',Auth::id())->first();
-
         $product->business_id = $business->id;
         $product->save();
         return redirect('dashboard/products');
