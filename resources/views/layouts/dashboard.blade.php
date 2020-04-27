@@ -163,45 +163,64 @@
         console.log($productFields);
         $('#editModal').modal('show');
       });
-    });
 
 
-    var tableSimulator = $('#simulator-table').DataTable();
-    tableSimulator.on('click', '.pagar', function() {
-      $tr = $(this).closest('tr');
-      if ($($tr).hasClass('child')) {
-        $tr = $tr.prev('.parent');
-      }
+      var tableClients = $('#clients-table').DataTable();
+      tableClients.on('click', '.transacciones', function() {
+        $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child')) {
+          $tr = $tr.prev('.parent');
+        }
 
-      var data = tableSimulator.row($tr).data();
-      console.log(data);
-      $('#name').val(data[2]);
-      $('#ordernumber').val(data[2]); 
-      $('#ladanumber').val("+52"); //cambiar cuando si se lea la transaccion del data
-      $('#phone').val("4443184173");
-      $('#currency').val("MXN");
-      $('#price').val(data[3]);
-      $('#amount').val(data[3]);
+        var data = tableClients.row($tr).data();
+        console.log(data);
 
 
-      $('#PagarModal').modal('show');
+        $('#transaction-client').modal('show');
 
-    });
+      });
 
 
 
-    var table = $('#clients-table').DataTable();
-    table.on('click', '.transacciones', function() {
-      $tr = $(this).closest('tr');
-      if ($($tr).hasClass('child')) {
-        $tr = $tr.prev('.parent');
-      }
+      var tableSimulator = $('#simulator-table').DataTable();
+      tableSimulator.on('click', '.pagar', function() {
+        $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child')) {
+          $tr = $tr.prev('.parent');
+        }
 
-      var data = table.row($tr).data();
-      console.log(data);
+        var data = tableSimulator.row($tr).data();
+        console.log(data);
+        $('#name').val(data[2]);
+        $('#ordernumber').val(data[2]);
+        $('#ladanumber').val("+52"); //cambiar cuando si se lea la transaccion del data
+        $('#phone').val("4443184173");
+        $('#currency').val("MXN");
+        $('#price').val(data[3]);
+        $('#amount').val(data[3]);
+        $('#PagarModal').modal('show');
+
+      });
+
+
+      var datatableProducts = $('#table-products-img').DataTable();
+      datatableProducts.on('click', '.imagenDetail', function() {
+        $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child')) {
+          $tr = $tr.prev('.parent');
+        }
+
+        var data = datatableProducts.row($tr).data();
+        console.log(data);
+        
+
+        
+        $('#name-product').text(data[0]);
+        $('#description-product').text(data[1]);
+        $('#imageProduct').attr("src",data[4]);
+        $('#detailImage').modal('show');
       
-
-      $('#transaction-client').modal('show');
+      });
 
     });
   </script>
@@ -260,6 +279,7 @@
       tecla_final = String.fromCharCode(tecla);
       return patron.test(tecla_final);
     }
+
     function checkYear(e) {
       tecla = (document.all) ? e.keyCode : e.which;
 
@@ -271,15 +291,14 @@
       var value = document.getElementById('year').value;
       if (value.length > 1) {
         return false; // keep form from submitting
-        
-      } 
-    
+
+      }
+
       // Patron de entrada, en este caso solo acepta numeros y letras
       patron = /[0-9]/;
       tecla_final = String.fromCharCode(tecla);
       return patron.test(tecla_final);
     }
-    
   </script>
 </body>
 
