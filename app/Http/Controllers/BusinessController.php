@@ -21,27 +21,40 @@ class BusinessController extends Controller
     }
 
     public function update(Request $request){
+
+        $validatedData = $request->validate([
+            'pin' => ['required', 'string', 'min:4','max:4', 'confirmed'],
+        ],['pin.confirmed'=>'EL pin debe coincidir en ambos campos']);
+
         $business = Business::where('client_id', '=', Auth::user()->id)->first();
         $business->name = $request['name'];
         $business->razon_social = $request['razon_social'];
         $business->rfc_rut_cuit = $request['rfc_rut_cuit'];
         $business->address = $request['address'];
         $business->postal_code = $request['postal_code'];
+        $business->ladanumber = $request['ladanumber'];
         $business->phone = $request['phone'];
         $business->email = $request['email'];
         $business->pin = $request['pin'];
+        $business->pin_confirmation = $request['pin'];
         $business->client_id = Auth::user()->id;
         $business->save();
-        return view('dashboard.indexBusiness', compact('business'));
+        return redirect('dashboard/settings');
     }
 
     public function store(Request $request){
+
+        $validatedData = $request->validate([
+            'pin' => ['required', 'string', 'min:4','max:4', 'confirmed'],
+        ],['pin.confirmed'=>'EL pin debe coincidir en ambos campos']);
+
         $business = new Business();
         $business->name = $request['name'];
         $business->razon_social = $request['razon_social'];
         $business->rfc_rut_cuit = $request['rfc_rut_cuit'];
         $business->address = $request['address'];
         $business->postal_code = $request['postal_code'];
+        $business->ladanumber = $request['ladanumber'];
         $business->phone = $request['phone'];
         $business->email = $request['email'];
         $business->pin = $request['pin'];
@@ -64,7 +77,8 @@ class BusinessController extends Controller
     }
 
     public function dashboardSettingsView(){
-        return view('dashboard.settings');
+        $business = Business::where('client_id', '=', Auth::user()->id)->first();
+        return view('dashboard.settings',['business'=>$business]);
     }
 
     public function dashboardFilesView(){

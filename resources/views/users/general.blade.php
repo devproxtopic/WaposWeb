@@ -9,7 +9,7 @@
                 <div class="card-header">
                     <h3 id="subtitle-dashboard-wapos">
                     @if ($business == 1)
-                        ¡Bienvenido!</h3>
+                        ¡Bienvenido! </h3>
                     @else
                     Registrar negocio</h3>
                     Bienvenido, para comenzar a utilizar nuestro servicio, es necesario que registres tu negocio
@@ -68,11 +68,20 @@
                             </div>
                         </div>
 
-                        <div class="form-group row ">
-                            <label for="country_id" class="col-md-4 col-form-label text-md-right">Teléfono</label>
+                        <div class="form-group row">
+                            <label for="ladanumber" class="col-md-4 col-form-label text-md-right">Teléfono</label>
 
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="phone" id="phone" required autofocus>
+                            <div class="col-md-2">
+                                <select name="ladanumber" id="ladanumber" class="form-control">
+                                    <option value="00">Select</option>
+                                    <option value="+52">México +52</option>
+                                    <option value="+59">Uruguay +59</option>
+                                   
+
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" name="phone"    onkeypress="return checkPhoneNumber(event)"  id="phone-number-client" placeholder="Número*" required autofocus>
                             </div>
                         </div>
 
@@ -96,8 +105,13 @@
                             <label for="country_id" class="col-md-4 col-form-label text-md-right">Confirmar PIN</label>
 
                             <div class="col-md-6">
-                                <input type="text" class="form-control" name="pin_confirmation" id="pin_confirmation" required autofocus>
+                                <input type="text" class="form-control @error('pin') is-invalid @enderror" name="pin_confirmation" id="pin_confirmation" required autofocus>
                             </div>
+                            @error('pin')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                            @enderror
                         </div>
 
 

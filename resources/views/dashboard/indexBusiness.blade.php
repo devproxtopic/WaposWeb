@@ -51,11 +51,18 @@
                             </div>
                         </div>
 
-                        <div class="form-group row ">
-                            <label for="country_id" class="col-md-4 col-form-label text-md-right">Teléfono</label>
+                        <div class="form-group row">
+                            <label for="ladanumber" class="col-md-4 col-form-label text-md-right">Teléfono</label>
 
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="phone" id="phone"  value='{{$business->phone}}' required autofocus>
+                            <div class="col-md-2">
+                                <select name="ladanumber" id="ladanumber" class="form-control">
+                                    <option value="00">Select</option>
+                                    <option value="+52">México +52</option>
+                                    <option value="+59">Uruguay +59</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <input type="number" class="form-control" name="phone" value='{{$business->phone}}'   onkeypress="return checkPhoneNumber(event)"  id="phone-number-client" placeholder="Número*" required autofocus>
                             </div>
                         </div>
 
