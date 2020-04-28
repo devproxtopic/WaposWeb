@@ -26,11 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $count = Business::all()->toArray();
-        if ($count){
+        $count = Business::where('client_id','=',Auth::user()->id)->get()->toArray();
+        //return count($count);
+        if (count($count) > 0){
             $business = 1;
+            
         }else{
             $business = 0;
+      
         }
         return view('users.general',['business'=>$business]);
     }

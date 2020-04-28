@@ -31,6 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/banks', 'BusinessController@dashboardBusinessBankView');
     Route::get(' /dashboard/simulator', 'BusinessController@dashboardSimulatorView');
     Route::get('/dashboard/settings', 'BusinessController@dashboardSettingsView');
+    Route::put('/dashboard/settings/update', 'BusinessController@update');
     Route::get('/dashboard/files', 'BusinessController@dashboardFilesView');
     Route::get('/dashboard/transactions', 'OrderController@dashboardTransactionsView');
     Route::post('/dashboard/transactions/create', 'OrderController@createTransaction');
