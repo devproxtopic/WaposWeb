@@ -33,6 +33,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/settings', 'BusinessController@dashboardSettingsView');
     Route::put('/dashboard/settings/update', 'BusinessController@update');
     Route::get('/dashboard/files', 'BusinessController@dashboardFilesView');
+    Route::post('/dashboard/files/update', 'BusinessController@updateFiles');
+
     Route::get('/dashboard/transactions', 'OrderController@dashboardTransactionsView');
     Route::post('/dashboard/transactions/create', 'OrderController@createTransaction');
     Route::get('/dashboard/pos', 'BusinessController@dashboardPOSView');

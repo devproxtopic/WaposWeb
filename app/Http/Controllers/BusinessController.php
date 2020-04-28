@@ -61,7 +61,7 @@ class BusinessController extends Controller
         $business->pin_confirmation = $request['pin_confirmation'];
         $business->client_id = Auth::user()->id;
         $business->save();
-        return redirect('/');
+        return redirect('dashboard/settings');
     }
 
     public function dashboardBusinessBankView(){
@@ -82,9 +82,31 @@ class BusinessController extends Controller
     }
 
     public function dashboardFilesView(){
-        return view('dashboard.files');
+        $business = Business::where('client_id', '=', Auth::user()->id)->first();
+
+        return view('dashboard.files',['business'=>$business]);
     }
 
+    public function updateFiles(Request $request){
+        $business = Business::where('client_id', '=', Auth::user()->id)->first();
+        if( $request->hasFile('acta_constitutiva') ){
+            $file = $request->file('acta_constitutiva')->store('files','public');
+            $business->file_register = $file;
+        }
+        if( $request->hasFile('cedula_fiscal') ){
+            $file = $request->file('cedula_fiscal')->store('files','public');
+            $business->cedula = $file;
+        }
+        if( $request->hasFile('constancia_domicilio') ){
+            $file = $request->file('constancia_domicilio')->store('files','public');
+            $business->file_address = $file;
+        }
+        $business->save();
+
+        $business = Business::where('client_id', '=', Auth::user()->id)->first();
+
+        return view('dashboard.files',['business'=>$business]);
+    }
    
     public function dashboardPOSView(){
         $buyers = Buyer::all();
