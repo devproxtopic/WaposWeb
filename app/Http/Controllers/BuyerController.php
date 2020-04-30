@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Buyer;
 use Illuminate\Http\Request;
+use Psy\Command\WhereamiCommand;
 
 class BuyerController extends Controller
 {
@@ -24,5 +25,11 @@ class BuyerController extends Controller
         $buyer->date_of_birth = $request['date_of_birth'];
         $buyer->save();
         return redirect('/dashboard/clients');
+    }
+
+    public function buyer($id){
+
+        $buyer = Buyer::where('id','=',$id)->get();
+        return $buyer;
     }
 }

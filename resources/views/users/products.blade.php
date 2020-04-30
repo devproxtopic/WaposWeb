@@ -50,7 +50,12 @@
                             <label for="sku" class="col-md-4 col-form-label text-md-right">SKU</label>
 
                             <div class="col-md-6">
-                                <input type="number" class="form-control" name="sku" id="sku" required autofocus>
+                                <input type="number" class="form-control  @error('sku') is-invalid @enderror" name="sku" id="sku" required autofocus>
+                                @error('sku')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                @enderror
                             </div>
                         </div>
 

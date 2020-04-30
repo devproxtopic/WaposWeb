@@ -34,7 +34,12 @@
                                 <td>{{getFullName($transaction->buyer_id)}}</td>
                                 <td>{{getProductName($transaction->product_id)}}</td>
                                 <td>{{$transaction->amount}}</td>
-                                <td>{{$transaction->transaction_status}}</td>
+                                @if($transaction->transaction_status == 'complete')
+                                <td style="color: green">{{$transaction->transaction_status}}</td>
+                                @endif
+                                @if($transaction->transaction_status == 'Pendiente')
+                                <td style="color: orange">{{$transaction->transaction_status}}</td>
+                                @endif
                                 <td style="display:none;">{{getFullBuyer($transaction->buyer_id)}}</td>
                                 <td style="display:none;">{{getProductInformation($transaction->product_id)}}</td>
                                 <td><a class="badge badge-success edit">Info</a></td>

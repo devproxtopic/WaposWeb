@@ -16,15 +16,13 @@ class OrderController extends Controller
     }
 
     public function createTransaction(Request $request){
-        $transaction = new Order();
-        $transaction->product_id = $request['product_id'];
-        $transaction->buyer_id = $request['buyer_id'];
-        $transaction->concept = $request['concept'];
-        $transaction->amount = $request['amount'];
-        $transaction->payment_type = $request['payment_type'];
-        $transaction->date = $request['date'];
-        $transaction->transaction_status = $request['transaction_status'];
-        $transaction->ordernumber = $request['ordernumber'];
+
+        $validatedData = $request->validate([
+            'orderno' => 'required|unique:orders',
+        ]);
+        
+        $transaction = Order::where('ordernumber','=',$request['orderno'])->first();
+        $transaction->transaction_status = "complete";
         $transaction->save();
         $transactions = Order::all();
         return view('dashboard.transactions',['transactions'=>$transactions]);

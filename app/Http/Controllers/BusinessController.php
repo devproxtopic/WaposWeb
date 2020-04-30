@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Business;
 use App\Buyer;
+use App\Order;
 
 use App\Product;
 use Illuminate\Http\Request;
@@ -125,7 +126,8 @@ class BusinessController extends Controller
     }
 
     public function dashboardSimulatorView(){
-        return view('dashboard.simulator');
+        $transactions = Order::where('transaction_status','=','Pendiente')->get();
+        return view('dashboard.simulator',['transactions'=>$transactions]);
     }
    
 

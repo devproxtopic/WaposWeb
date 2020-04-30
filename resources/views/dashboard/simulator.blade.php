@@ -23,25 +23,25 @@
                             <th style="display:none;"></th>
                             <th style="display:none;"></th>
                             <th style="display:none;"></th>
-                            <th style="display:none;"></th>
                             <th></th>
 
                             </tr>
                         </thead>
                         <tbody>
+                        @foreach($transactions as $transaction)
                             <tr>
-                                <td >14/06/20</td>
-                                <td >87347</td>
-                                <td >John Doe</td>
-                                <td >$120.00 MXN</td>
-                                <td style="color: orange">en proceso</td>
-                                <td >Concepto de compra</td>
-                                <td style="display:none;">1</td>
-                                <td style="display:none;">credito</td>
-                                <td style="display:none;">{{getFullName(1)}}</td>
-                                <td style="display:none;">{{getProductInformation(1)}}</td>
+                                <td >{{$transaction->date}}</td>
+                                <td >{{$transaction->ordernumber}}</td>
+                                <td >{{getFullName($transaction->buyer_id)}}</td>
+                                <td >{{$transaction->amount}}</td>
+                                <td style="color: orange">{{$transaction->transaction_status}}</td>
+                                <td >{{$transaction->concept}}</td>
+                                <td style="display:none;">{{$transaction->payment_type}}</td>
+                                <td style="display:none;">{{getFullName($transaction->buyer_id)}}</td>
+                                <td style="display:none;">{{getProductInformation($transaction->product_id)}}</td>
                                 <td><a class="btn btn-success pagar">Pagar</a></td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                 </div>
@@ -67,7 +67,7 @@
                     <div class="form-group row">
                         <label class="col-md-5 col-form-label"></label>
                         <label class="col-md-3 col-form-label">Orden No.</label>
-                        <label for="ordernumber" name="orderno" id="orderno" class="col-md-2 col-form-label text-align-right"></label>
+                        <input for="orderno" name="orderno" id="orderno" class=" form-control col-md-2 col-form-label text-align-right" require autofocus>
                     </div>
 
                     <div class="form-group row ">
@@ -139,15 +139,7 @@
                         </div>
                     </div>
 
-                    <input type="text" class="form-control" name="product_id"value="2" style="display:none;" class="col-md-4 col-form-label ">
-                    <input type="text" class="form-control" name="buyer_id" value="2" style="display:none;" class="col-md-4 col-form-label ">
-                    <input type="text" class="form-control" name="concept" value="producto importado" style="display:none;" class="col-md-4 col-form-label ">
-                    <input type="text" class="form-control" name="payment_type" value="credito" style="display:none;" class="col-md-4 col-form-label ">
-                    <input type="text" class="form-control" name="date" value="2020-04-22 17:54:28"  style="display:none;" class="col-md-4 col-form-label ">
-                    <input type="text" class="form-control" name="transaction_status" value ="complete"id="transaction_status"  style="display:none;" class="col-md-4 col-form-label ">
-                    <input type="text" class="form-control" name="ordernumber" id="ordernumber"  style="display:none;" class="col-md-4 col-form-label ">
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                         <button type="submit" class="btn btn-success">Save changes</button>
                     </div>
                 </form>

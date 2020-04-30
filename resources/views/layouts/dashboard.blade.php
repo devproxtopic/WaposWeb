@@ -18,7 +18,7 @@
 
   <!-- Scripts -->
   <script src="{{ asset('js/app.js') }}"></script>
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <script src="https://kit.fontawesome.com/9a331721e8.js" crossorigin="anonymous"></script>
@@ -108,12 +108,14 @@
   </div><!-- /#right-panel -->
 
   <!-- Right Panel -->
-
-  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
   <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+
 
   <script type="text/javascript">
     $(document).ready(function() {
@@ -131,12 +133,10 @@
         if ($('.country-select').val() == 'ugy') {
           $('#acta').text("Tarjeta de RUT");
           $('#cedula').text("Constancia BPS");
-          console.log("pulso uruguay")
         }
         if ($('.country-select').val() == 'mxn') {
           $('#acta').text("Acta constitutiva");
           $('#cedula').text("Cedula Fiscal");
-          console.log("pulso Mexico")
         }
       });
 
@@ -160,7 +160,6 @@
         $('#currency').val($productFields["currency"]);
         $('#description').val($productFields["description"]);
         $('#price').val('$' + $productFields["price"]);
-        console.log($productFields);
         $('#editModal').modal('show');
       });
 
@@ -171,13 +170,8 @@
         if ($($tr).hasClass('child')) {
           $tr = $tr.prev('.parent');
         }
-
         var data = tableClients.row($tr).data();
-        console.log(data);
-
-
         $('#transaction-client').modal('show');
-
       });
 
 
@@ -188,18 +182,16 @@
         if ($($tr).hasClass('child')) {
           $tr = $tr.prev('.parent');
         }
-
         var data = tableSimulator.row($tr).data();
         console.log(data);
         $('#name').val(data[2]);
-        $('#ordernumber').val(data[2]);
+        $('#orderno').val(data[1]);
         $('#ladanumber').val("+52"); //cambiar cuando si se lea la transaccion del data
         $('#phone').val("4443184173");
         $('#currency').val("MXN");
         $('#price').val(data[3]);
         $('#amount').val(data[3]);
         $('#PagarModal').modal('show');
-
       });
 
 
@@ -209,18 +201,71 @@
         if ($($tr).hasClass('child')) {
           $tr = $tr.prev('.parent');
         }
-
         var data = datatableProducts.row($tr).data();
         console.log(data);
-        
-
-        
         $('#name-product').text(data[0]);
         $('#description-product').text(data[1]);
-        $('#imageProduct').attr("src",data[4]);
+        $('#imageProduct').attr("src", data[4]);
         $('#detailImage').modal('show');
-      
+
       });
+
+
+      $('.client-select-pos').change(function() {
+        console.log($('.client-select-pos').val())
+        $valId = $('.client-select-pos').val();
+        if ($valId != 0 && $valId != -1) {
+              $.ajax({
+                type: 'GET', //THIS NEEDS TO BE GET
+                url: '/buyers/' + $valId,
+                success: function(data) {
+                  console.log('success');
+                  $buyer = data[0];
+                  $('#name').val($buyer["name"]);
+                  $('#lastname').val($buyer["lastname"]);
+                  $('#lada').val($buyer["ladanumber"]);
+                  $('#phone').val($buyer["phone"]);
+                  console.log($buyer);
+                },
+                error: function() {
+                  console.log('no success');
+                  console.log(data);
+                }
+              });
+
+        } else {
+          $('#general_users').find('input:text').val('');
+        }
+      });
+
+
+
+      $('.product-select-pos').change(function() {
+        console.log($('.product-select-pos').val())
+        $valId = $('.product-select-pos').val();
+        if ($valId != 0 && $valId != -1) {
+          $.ajax({
+            type: 'GET', //THIS NEEDS TO BE GET
+            url: '/products/' + $valId,
+            success: function(data) {
+              console.log('success');
+              $product = data[0];
+              $('#title').val($product["title"]);
+              $('#currency').val($product["currency"]);
+              $('#price').val("$"+$product["price"]+".00");
+            },
+            error: function() {
+              console.log('no success');
+              console.log(data);
+            }
+          });
+        } else {
+          $('#general_users').find('input:text').val('');
+        }
+
+      });
+
+
 
     });
   </script>

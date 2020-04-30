@@ -25,7 +25,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/admin-data', 'UserController@adminDataView');
     Route::get('/dashboard/products', 'UserController@dashboardProductsDataView');
     Route::post('/dashboard/products/create', 'ProductController@createProduct');
-
+    Route::get('/buyers/{id}', 'BuyerController@buyer');
+    Route::get('/products/{id}', 'ProductController@product');
+    Route::get('/products/{id}', 'ProductController@product');
+    Route::post('/messages/create', 'MessageController@create');
     
     Route::get('/dashboard/myBusiness', 'BusinessController@index');
     Route::get('/dashboard/banks', 'BusinessController@dashboardBusinessBankView');

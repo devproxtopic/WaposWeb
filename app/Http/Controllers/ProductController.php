@@ -10,6 +10,9 @@ class ProductController extends Controller
 {
     //
     public function createProduct(Request $request){
+        $validatedData = $request->validate([
+            'sku' => 'required|unique:products',
+        ]);
         $product = new Product();
         $product->title = $request['title'];
         $product->description = $request['description'];
@@ -24,5 +27,11 @@ class ProductController extends Controller
         $product->business_id = $business->id;
         $product->save();
         return redirect('dashboard/products');
+    }
+
+    public function product($id){
+
+        $product = Product::where('id','=',$id)->get();
+        return $product;
     }
 }
