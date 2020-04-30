@@ -107,7 +107,7 @@
                                 <td>{{$product->sku}}</td>
                                 <td>{{$product->price}}</td>
                                 @if($product->image)
-                                <td style="display:none;">{{ url('storage/'.$product->image) }}</td>
+                                <td style="display:none;">{{ asset('storage/'.$product->image) }}</td>
                                 <td><a class="btn btn-success imagenDetail">Ver img</a></td>
                                 @else
                                 <td style="display:none;"></td>
