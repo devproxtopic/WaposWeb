@@ -101,7 +101,7 @@
   <div id="right-panel" class="right-panel">
 
     <div class="content mt-3">
-
+    <input type="hidden" name="url_base" id="url_base" value="{{ url('') }}">
       @yield('content')
 
     </div> <!-- .content -->
@@ -212,12 +212,13 @@
 
 
       $('.client-select-pos').change(function() {
+        var baseUrl = $('#url_base').val();
         console.log($('.client-select-pos').val())
         $valId = $('.client-select-pos').val();
         if ($valId != 0 && $valId != -1) {
               $.ajax({
                 type: 'GET', //THIS NEEDS TO BE GET
-                url: '/buyers/' + $valId,
+                url: baseUrl +'/buyers/' + $valId,
                 success: function(data) {
                   console.log('success');
                   $buyer = data[0];
