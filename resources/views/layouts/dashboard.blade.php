@@ -242,12 +242,13 @@
 
 
       $('.product-select-pos').change(function() {
+        var baseUrl = $('#url_base').val();
         console.log($('.product-select-pos').val())
         $valId = $('.product-select-pos').val();
         if ($valId != 0 && $valId != -1) {
           $.ajax({
             type: 'GET', //THIS NEEDS TO BE GET
-            url: '/products/' + $valId,
+            url: baseUrl +'/products/' + $valId,
             success: function(data) {
               console.log('success');
               $product = data[0];
