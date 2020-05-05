@@ -145,7 +145,7 @@
                 </div>
                 <img src="" id="imageProduct" style="width: 200px; height: 264px;">
                 <div class="row">
-                <input style="display: none" name="url_share_link" id="url_share_link">
+                <input  name="url_share_link" id="url_share_link">
                 <button type="button" id="shareURL" class="btn btn-primary" >Compartir Link</button>
                 </div>
             </div>
