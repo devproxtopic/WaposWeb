@@ -90,6 +90,7 @@
                     <table class="table" id="table-products-img">
                         <thead class="table">
                             <tr>
+                            <th style="display:none;"></th>
                                 <th scope="col">Nombre</th>
                                 <th scope="col">Descripcion</th>
                                 <th scope="col">SKU</th>
@@ -102,6 +103,7 @@
                         <tbody>
                             @foreach($products as $product)
                             <tr>
+                            <th style="display:none;">{{$product->id}}</th>
                                 <td>{{$product->title}}</td>
                                 <td>{{$product->description}}</td>
                                 <td>{{$product->sku}}</td>
@@ -142,6 +144,10 @@
                     <label id="description-product"></label>
                 </div>
                 <img src="" id="imageProduct" style="width: 200px; height: 264px;">
+                <div class="row">
+                <input style="display: none" name="url_share_link" id="url_share_link">
+                <button type="button" id="shareURL" class="btn btn-primary" >Compartir Link</button>
+                </div>
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>

@@ -101,7 +101,7 @@
   <div id="right-panel" class="right-panel">
 
     <div class="content mt-3">
-    <input type="hidden" name="url_base" id="url_base" value="{{ url('') }}">
+      <input type="hidden" name="url_base" id="url_base" value="{{ url('') }}">
       @yield('content')
 
     </div> <!-- .content -->
@@ -203,12 +203,25 @@
         }
         var data = datatableProducts.row($tr).data();
         console.log(data);
-        $('#name-product').text(data[0]);
-        $('#description-product').text(data[1]);
-        $('#imageProduct').attr("src", data[4]);
+        $('#name-product').text(data[1]);
+        $('#description-product').text(data[2]);
+        $('#imageProduct').attr("src", data[5]);
+        var baseUrl = $('#url_base').val();
+        var completeBaseURL = baseUrl + "/products/product/" + data[0] + "/details/";
+
+        $('#url_share_link').val(completeBaseURL);
+
+
         $('#detailImage').modal('show');
+        //copy on clipboard
+        
 
       });
+
+      $('#shareURL').click( function() {
+          $('#url_share_link').select();
+          document.execCommand("copy");
+        });
 
 
       $('.client-select-pos').change(function() {
@@ -216,23 +229,23 @@
         console.log($('.client-select-pos').val())
         $valId = $('.client-select-pos').val();
         if ($valId != 0 && $valId != -1) {
-              $.ajax({
-                type: 'GET', //THIS NEEDS TO BE GET
-                url: baseUrl +'/buyers/' + $valId,
-                success: function(data) {
-                  console.log('success');
-                  $buyer = data[0];
-                  $('#name').val($buyer["name"]);
-                  $('#lastname').val($buyer["lastname"]);
-                  $('#lada').val($buyer["ladanumber"]);
-                  $('#phone').val($buyer["phone"]);
-                  console.log($buyer);
-                },
-                error: function() {
-                  console.log('no success');
-                  console.log(data);
-                }
-              });
+          $.ajax({
+            type: 'GET', //THIS NEEDS TO BE GET
+            url: baseUrl + '/buyers/' + $valId,
+            success: function(data) {
+              console.log('success');
+              $buyer = data[0];
+              $('#name').val($buyer["name"]);
+              $('#lastname').val($buyer["lastname"]);
+              $('#lada').val($buyer["ladanumber"]);
+              $('#phone').val($buyer["phone"]);
+              console.log($buyer);
+            },
+            error: function() {
+              console.log('no success');
+              console.log(data);
+            }
+          });
 
         } else {
           $('#general_users').find('input:text').val('');
@@ -248,13 +261,13 @@
         if ($valId != 0 && $valId != -1) {
           $.ajax({
             type: 'GET', //THIS NEEDS TO BE GET
-            url: baseUrl +'/products/' + $valId,
+            url: baseUrl + '/products/' + $valId,
             success: function(data) {
               console.log('success');
               $product = data[0];
               $('#title').val($product["title"]);
               $('#currency').val($product["currency"]);
-              $('#price').val("$"+$product["price"]+".00");
+              $('#price').val("$" + $product["price"] + ".00");
             },
             error: function() {
               console.log('no success');
