@@ -47,7 +47,7 @@
                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         
                       
-                        data-key='{{ env('STRIPE_PK') }}'
+                        data-key="pk_test_bOwsCmDWzdS8k2SYwvX3WoIn00tK9Z5yXo"
                         data-amount="34000000"
                         data-name="Juan Salaz"
                         data-description="Example charge"
