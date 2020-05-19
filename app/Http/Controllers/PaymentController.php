@@ -19,6 +19,8 @@ class PaymentController extends Controller
                 'source' => $token
             ]
             );
+
+            echo('Pago realizado correctamente');
         
     }
     
