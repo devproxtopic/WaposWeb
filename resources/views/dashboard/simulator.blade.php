@@ -45,7 +45,9 @@
                                 <form action="/api/payment" method="POST">
                     <script
                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-                        data-key="pk_test_bOwsCmDWzdS8k2SYwvX3WoIn00tK9Z5yXo"
+                        
+                      
+                        data-key='{{ env('STRIPE_PK') }}'
                         data-amount="34000000"
                         data-name="Juan Salaz"
                         data-description="Example charge"
