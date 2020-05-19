@@ -125,6 +125,23 @@
                     </form>
                 </div>
             </div>
+            @else 
+            <div>
+                <form action="/api/payment" method="POST">
+                    <script
+                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="pk_test_bOwsCmDWzdS8k2SYwvX3WoIn00tK9Z5yXo"
+                        data-amount="1000000"
+                        data-name="Juan Salaz"
+                        data-description="Example charge"
+                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                        data-locale="auto"
+                        data-currency="mxn"
+                        >
+                        
+                    </script>
+                </form>
+            </div>
             @endif
 
         </div>
