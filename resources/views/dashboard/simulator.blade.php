@@ -24,6 +24,7 @@
                             <th style="display:none;"></th>
                             <th style="display:none;"></th>
                             <th></th>
+                            <th></th>
 
                             </tr>
                         </thead>
@@ -40,6 +41,22 @@
                                 <td style="display:none;">{{getFullName($transaction->buyer_id)}}</td>
                                 <td style="display:none;">{{getProductInformation($transaction->product_id)}}</td>
                                 <td><a class="btn btn-success pagar">Pagar</a></td>
+                                <td>
+                                <form action="/api/payment" method="POST">
+                    <script
+                        src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+                        data-key="pk_test_bOwsCmDWzdS8k2SYwvX3WoIn00tK9Z5yXo"
+                        data-amount="34000000"
+                        data-name="Juan Salaz"
+                        data-description="Example charge"
+                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+                        data-locale="auto"
+                        data-currency="mxn"
+                        >
+                        
+                    </script>
+                </form>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>

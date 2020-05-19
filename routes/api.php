@@ -41,3 +41,7 @@ Route::get('email/verify/{id}', 'API\VerificationApiController@verify')
 Route::post('send-password-reset', 'API\PasswordResetController@create');
 Route::get('password/find/{token}', 'API\PasswordResetController@find');
 Route::post('reset-password', 'API\PasswordResetController@reset');
+
+
+
+Route::post('/payment','PaymentController@paymentProcess');
