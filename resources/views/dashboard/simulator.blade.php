@@ -42,7 +42,7 @@
                                 <td style="display:none;">{{getProductInformation($transaction->product_id)}}</td>
                                 <td><a class="btn btn-success pagar">Pagar</a></td>
                                 <td>
-                                <form action="/api/payment" method="POST">
+                                <form action="{{ url('/api/payment')}}" method="POST">
                     <script
                         src="https://checkout.stripe.com/checkout.js" class="stripe-button"
                         
