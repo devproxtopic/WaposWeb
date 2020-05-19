@@ -1053,11 +1053,11 @@ aside.left-panel {
   .navbar .menu-title {
     border-bottom: 1px solid #d7d9e3 ;
     border-top: 1px solid #d7d9e3 ;
-    color: #d7d9e3;
+    color: #FFF;
     clear: both;
     display: block;
     font-family: 'Open Sans';
-    font-size: 14px;
+    font-size: 18px;
     font-weight: 700;
     line-height: 40px;
    
@@ -1076,10 +1076,10 @@ aside.left-panel {
         display: none; }
       .navbar .navbar-nav li > a {
         background: none !important;
-        color: #c8c9ce !important;
+        color: #FFF !important;
         display: inline-block;
         font-family: 'Open Sans';
-        font-size: 14px;
+        font-size: 20px;
         line-height: 30px;
         margin-bottom: 2px;
         position: relative;
@@ -1088,15 +1088,15 @@ aside.left-panel {
         .navbar .navbar-nav li > a:hover .menu-icon {
           color: #fff !important; }
         .navbar .navbar-nav li > a .menu-icon {
-          color: #d7d9e3;
+          color: #fff;
           float: left;
-          margin-top: 8px;
+          margin-top: 10px;
           margin-right: 1em;
           width: 1.5em;
           text-align: left;
           z-index: 9; }
         .navbar .navbar-nav li > a .menu-title-text {
-          font-size: 14px; }
+          font-size: 18px; }
         .navbar .navbar-nav li > a .badge {
           border-radius: 0;
           font-family: 'Open Sans';
@@ -1155,9 +1155,13 @@ aside.left-panel {
           position: static !important; }
 
 .navbar .navbar-nav > .active > a,
-.navbar .navbar-nav > .active > a:focus,
+.navbar .navbar-nav > .active > a:focus{
+  color: #FFF !important;
+}
 .navbar .navbar-nav > .active > a:hover {
-  color: #d7d9e3 !important; }
+  color: #d7d9e3  !important; }
+
+
 
 .navbar-nav li span.count {
   background: #a9d86e;
