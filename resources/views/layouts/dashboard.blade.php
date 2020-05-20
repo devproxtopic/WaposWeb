@@ -118,7 +118,31 @@
 
 
   <script type="text/javascript">
+    var stripe = Stripe('pk_test_bOwsCmDWzdS8k2SYwvX3WoIn00tK9Z5yXo');
+    var elements = stripe.elements();
+
     $(document).ready(function() {
+
+      var card = elements.create('card', {
+        style: {
+          base: {
+            iconColor: '#2f38c2',
+            color: '#31325F',
+            lineHeight: '50px',
+            fontWeight: 300,
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSize: '15px',
+
+            '::placeholder': {
+              color: '#9ba1a8',
+            },
+          },
+        }
+      });
+      // Add an instance of the card Element into the `card-element` <div>.
+      card.mount('#card-element');
+
+
       $('.client-select').change(function() {
         if ($('.client-select').val() == '0') {
           $nombreUser = $('#name').val();
@@ -214,14 +238,14 @@
 
         $('#detailImage').modal('show');
         //copy on clipboard
-        
+
 
       });
 
-      $('#shareURL').click( function() {
-          $('#url_share_link').select();
-          document.execCommand("copy");
-        });
+      $('#shareURL').click(function() {
+        $('#url_share_link').select();
+        document.execCommand("copy");
+      });
 
 
       $('.client-select-pos').change(function() {
@@ -253,7 +277,7 @@
       });
 
 
-
+      
       $('.product-select-pos').change(function() {
         var baseUrl = $('#url_base').val();
         console.log($('.product-select-pos').val())
@@ -280,7 +304,39 @@
 
       });
 
+      var form = document.getElementById('payment-form');
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
 
+        stripe.createToken(card).then(function(result) {
+          if (result.error) {
+            // Inform the customer that there was an error.
+            console.log("al parecer errores con el token")
+            var errorElement = document.getElementById('card-errors');
+            errorElement.textContent = result.error.message;
+          } else {
+            // Send the token to your server.
+            console.log("al parecer todo bien con el token")
+            console.log(result.token["id"])
+            var baseUrl = $('#url_base').val();
+            //stripeTokenHandler(result.token);
+            $.ajax({
+            type: 'POST',
+            url: baseUrl + '/dashboard/transactions/create',
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            data: { stripeToken: result.token["id"]} ,
+            success: function(data) {
+              console.log('success');
+            console.log(data);
+            },
+            error: function(data) {
+              console.log('no success');
+              console.log(data);
+            }
+          });
+          }
+        });
+      });
 
     });
   </script>
