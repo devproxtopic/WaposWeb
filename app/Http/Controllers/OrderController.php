@@ -43,7 +43,7 @@ class OrderController extends Controller
             ]
             );
 
-            echo('Pago realizado correctamente');
+            echo($charge);
     }
 
     
