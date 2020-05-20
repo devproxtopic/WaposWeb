@@ -2470,3 +2470,22 @@ header .form-inline {
 #subtitle-dashboard-wapos {
   color: #238B5E !important
 }
+
+#modal-purchase{
+  background-color:  #238B5E;
+  
+  color: #fff;
+}
+
+#title-purchase{
+  color: #238B5E;
+  font-weight: bold;
+}
+#orderno{
+  border: none;
+  border-bottom-color: #238B5E;  
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-radius: 0px;
+  
+}
