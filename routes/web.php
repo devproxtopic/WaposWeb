@@ -17,6 +17,7 @@ Route::get('/', function () {
 
 Auth::routes(['verify' => true]);
 Route::get('/products/product/{id}/details/', 'SharableLinkController@productLink');
+Route::get('/negocios/orders/{id}/details/', 'PaymentController@paymentForm');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/home', 'HomeController@index');

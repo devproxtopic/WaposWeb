@@ -1,4 +1,4 @@
-@extends('layouts.dashboard')
+@extends('layouts.dashboard_simulator')
 
 @section('content')
 
@@ -76,7 +76,7 @@
                     <div class="form-group row">
                         <label class="col-md-5 col-form-label "></label>
                         <label class="col-md-3 col-form-label " id="title-purchase">Orden No.</label>
-                        <input for="orderno" name="orderno" id="orderno" class=" form-control col-md-2 col-form-label text-align-right" require autofocus>
+                        <input for="orderno" name="orderno" id="orderno" class=" form-control col-md-2 col-form-label text-align-right" require autofocus disabled>
                     </div>
 
                     <div class="form-group row ">
@@ -85,16 +85,16 @@
 
                     <div class="form-group row">
                         <div class="col-md-12">
-                            <input type="text" class="form-control" name="name" id="name" placeholder="Nombre del cliente" required autofocus>
+                            <input type="text" class="form-control" name="name" id="name" placeholder="Nombre del cliente" required autofocus disabled>
                         </div>
                     </div>
 
                     <div class="form-group row">
                         <div class="col-md-4">
-                            <input type="text" class="form-control" name="ladanumber" id="ladanumber" placeholder="lada" required autofocus>
+                            <input type="text" class="form-control" name="ladanumber" id="ladanumber" placeholder="lada" required autofocus disabled>
                         </div>
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="phone" id="phone" placeholder="phone" required autofocus>
+                            <input type="text" class="form-control" name="phone" id="phone" placeholder="phone" required autofocus disabled>
                         </div>
                     </div>
 
@@ -104,10 +104,13 @@
 
                     <div class="form-group row">
                         <div class="col-md-4">
-                            <input type="text" class="form-control" name="currency" id="currency" placeholder="currency" required autofocus>
+                            <input type="text" class="form-control" name="currency" id="currency" placeholder="currency" required autofocus disabled>
                         </div>
+                       
                         <div class="col-md-8">
-                            <input type="text" class="form-control" name="amount" id="amount" placeholder="price" required autofocus>
+                            <input type="text" class="form-control" name="amount" id="amount"  required autofocus disabled>
+                            <input type="hidden" class="form-control" name="amount_db" id="amount_db"required autofocus>
+
                         </div>
                     </div>
                     <!--

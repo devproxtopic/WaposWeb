@@ -28,7 +28,10 @@ class MessageController extends Controller
         $transaction->transaction_status = "Pendiente";
         $transaction->ordernumber = $request['ordernumber'];
         $transaction->save();
-        $transactions = Order::all();
-        return view('dashboard.transactions',['transactions'=>$transactions]);
+
+        return redirect('/negocios/orders/'.$request['ordernumber'].'/details/');
+
+       /* $transactions = Order::all();
+        return view('dashboard.transactions',['transactions'=>$transactions]);*/
     }
 }

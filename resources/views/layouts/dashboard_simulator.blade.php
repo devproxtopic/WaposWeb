@@ -124,60 +124,13 @@
     
 
 
-      $('.client-select').change(function() {
-        if ($('.client-select').val() == '0') {
-          $nombreUser = $('#name').val();
-          $lastNameUser = $('#lastname').val();
-          $ladaUser = $('#lada').val();
-          $phoneUser = $('#phone').val();
-        }
-      });
+     
 
+      
 
-      $('.country-select').change(function() {
-        if ($('.country-select').val() == 'ugy') {
-          $('#acta').text("Tarjeta de RUT");
-          $('#cedula').text("Constancia BPS");
-        }
-        if ($('.country-select').val() == 'mxn') {
-          $('#acta').text("Acta constitutiva");
-          $('#cedula').text("Cedula Fiscal");
-        }
-      });
+      
 
-      var table = $('#datatable').DataTable();
-      table.on('click', '.edit', function() {
-        $tr = $(this).closest('tr');
-        if ($($tr).hasClass('child')) {
-          $tr = $tr.prev('.parent');
-        }
-
-        var data = table.row($tr).data();
-        console.log(data);
-        $userFields = JSON.parse(data[6]);
-        $productFields = JSON.parse(data[7]);
-
-        $('#product_id').val(data[3]);
-        $('#ordernumber').text(data[1]);
-        $('#name').val($userFields["name"]);
-        $('#phone').val($userFields["phone"]);
-        $('#product_name').val($productFields["title"]);
-        $('#currency').val($productFields["currency"]);
-        $('#description').val($productFields["description"]);
-        $('#price').val('$' + $productFields["price"]);
-        $('#editModal').modal('show');
-      });
-
-
-      var tableClients = $('#clients-table').DataTable();
-      tableClients.on('click', '.transacciones', function() {
-        $tr = $(this).closest('tr');
-        if ($($tr).hasClass('child')) {
-          $tr = $tr.prev('.parent');
-        }
-        var data = tableClients.row($tr).data();
-        $('#transaction-client').modal('show');
-      });
+     
 
 
 
@@ -202,116 +155,151 @@
       });
 
 
-      var datatableProducts = $('#table-products-img').DataTable();
-      datatableProducts.on('click', '.imagenDetail', function() {
-        $tr = $(this).closest('tr');
-        if ($($tr).hasClass('child')) {
-          $tr = $tr.prev('.parent');
-        }
-        var data = datatableProducts.row($tr).data();
-        console.log(data);
-        $('#name-product').text(data[1]);
-        $('#description-product').text(data[2]);
-        $('#imageProduct').attr("src", data[5]);
-        var baseUrl = $('#url_base').val();
-        var completeBaseURL = baseUrl + "/products/product/" + data[0] + "/details/";
-
-        $('#url_share_link').val(completeBaseURL);
+  
 
 
-        $('#detailImage').modal('show');
-        //copy on clipboard
-
-
-      });
-
-      $('#shareURL').click(function() {
-        $('#url_share_link').select();
-        document.execCommand("copy");
-      });
-
-      var customer_name = "";
-      var business_name = "";
-      var price = "";
-      $('.client-select-pos').change(function() {
-        console.log("entro");
-        var baseUrl = $('#url_base').val();
-        console.log($('.client-select-pos').val())
-        $valId = $('.client-select-pos').val();
-        if ($valId != 0 && $valId != -1) {
-          $.ajax({
-            type: 'GET', //THIS NEEDS TO BE GET
-            url: baseUrl + '/buyers/' + $valId,
-            success: function(data) {
-              console.log('success');
-              $buyer = data[0];
-              customer_name = $buyer["name"] +" "+ $buyer["lastname"];
-              $('#name').val($buyer["name"]);
-              $('#lastname').val($buyer["lastname"]);
-              $('#lada').val($buyer["ladanumber"]);
-              $('#phone').val($buyer["phone"]);
-              
-              messagePOS(customer_name, price, business_name);
-        
-            },
-            error: function() {
-              console.log('no success');
-              console.log(data);
-            }
-          });
-
-        } else {
-          $('#general_users').find('input:text').val('');
-        }
-      });
+     
 
 
       
-      $('.product-select-pos').change(function() {
-        var baseUrl = $('#url_base').val();
-        console.log($('.product-select-pos').val())
-        $valId = $('.product-select-pos').val();
-        if ($valId != 0 && $valId != -1) {
-          $.ajax({
-            type: 'GET', //THIS NEEDS TO BE GET
-            url: baseUrl + '/products/' + $valId,
-            success: function(data) {
-              console.log('success');
-              $product = data[0];
-              $('#title').val($product["title"]);
-              $('#currency').val($product["currency"]);
-              $('#price').val($product["price"]);
-              price = $product["price"];
-
-              messagePOS(customer_name, price, business_name);
-            },
-            error: function() {
-              console.log('no success');
-              console.log(data);
-            }
-          });
-        } else {
-          $('#general_users').find('input:text').val('');
-        }
-
-      });
 
 
       
      
-      
+      var stripe = Stripe('pk_test_bOwsCmDWzdS8k2SYwvX3WoIn00tK9Z5yXo');
+    var elements = stripe.elements();
+      var card = elements.create('card', {
+        style: {
+          base: {
+            iconColor: '#2f38c2',
+            color: '#31325F',
+            lineHeight: '50px',
+            fontWeight: 300,
+            fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+            fontSize: '15px',
+
+            '::placeholder': {
+              color: '#9ba1a8',
+            },
+          },
+        }
+      });
+      // Add an instance of the card Element into the `card-element` <div>.
+      card.mount('#card-element');
+      var form = document.getElementById('payment-form');
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+
+        stripe.createToken(card).then(function(result) {
+          if (result.error) {
+            // Inform the customer that there was an error.
+            console.log("al parecer errores con el token")
+            var errorElement = document.getElementById('card-errors');
+            errorElement.textContent = result.error.message;
+          } else {
+            // Send the token to your server.
+            var baseUrl = $('#url_base').val();
+
+            var order_number = document.getElementById('orderno').value;
+            var phone_number = document.getElementById('phone').value;
+            var name_customer = document.getElementById('name').value;
+            var amount_purchase = document.getElementById('amount_db').value;
+            $.ajax({
+            type: 'POST',
+            url: baseUrl + '/dashboard/transactions/create',
+            headers: { 'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content') },
+            data: { stripeToken: result.token["id"], amount: amount_purchase, phone: phone_number, name: name_customer, description: "This is the payment for the order "+order_number, orderno:order_number  } ,
+            success: function(data) {
+              console.log('success');
+              $('#PagarModal').modal('hide');
+              alert("Pago realizado exitosamente");
+              console.log(data);
+            },
+            error: function(data) {
+              alert(data.responseJSON.message);
+              $('#PagarModal').modal('hide');
+              console.log(data);
+            }
+          });
+          }
+        });
+      });
     });
   </script>
   <script>
+    function checkNumberCard(e) {
+      tecla = (document.all) ? e.keyCode : e.which;
+
+      //Tecla de retroceso para borrar, siempre la permite
+      if (tecla == 8) {
+        return true;
+      }
+
+      var value = document.getElementById('card-number').value;
+      if (value.length > 15) {
+        return false; // keep form from submitting
+      }
+      // Patron de entrada, en este caso solo acepta numeros y letras
+      patron = /[0-9]/;
+      tecla_final = String.fromCharCode(tecla);
+      return patron.test(tecla_final);
+    }
+
+    function checkCVC(e) {
+      tecla = (document.all) ? e.keyCode : e.which;
+
+      //Tecla de retroceso para borrar, siempre la permite
+      if (tecla == 8) {
+        return true;
+      }
+
+      var value = document.getElementById('cvc').value;
+      if (value.length > 2) {
+        return false; // keep form from submitting
+      }
+      // Patron de entrada, en este caso solo acepta numeros y letras
+      patron = /[0-9]/;
+      tecla_final = String.fromCharCode(tecla);
+      return patron.test(tecla_final);
+    }
 
 
-    
+    function checkMonth(e) {
+      tecla = (document.all) ? e.keyCode : e.which;
 
+      //Tecla de retroceso para borrar, siempre la permite
+      if (tecla == 8) {
+        return true;
+      }
 
-    
+      var value = document.getElementById('month').value;
+      if (value.length > 1) {
+        return false; // keep form from submitting
+      }
+      // Patron de entrada, en este caso solo acepta numeros y letras
+      patron = /[0-9]/;
+      tecla_final = String.fromCharCode(tecla);
+      return patron.test(tecla_final);
+    }
 
-    function messagePOS(name, price, business_name) {
-      $('#message').val("Hola "+ name +" soy Paula, tu asistente de pago de WAPOS. Hemos generado el siguiente enlace para que realice tu pago a "+ business_name +" de forma segura, por el importe de $" +$product["price"]+".00");
+    function checkYear(e) {
+      tecla = (document.all) ? e.keyCode : e.which;
+
+      //Tecla de retroceso para borrar, siempre la permite
+      if (tecla == 8) {
+        return true;
+      }
+
+      var value = document.getElementById('year').value;
+      if (value.length > 1) {
+        return false; // keep form from submitting
+
+      }
+
+      // Patron de entrada, en este caso solo acepta numeros y letras
+      patron = /[0-9]/;
+      tecla_final = String.fromCharCode(tecla);
+      return patron.test(tecla_final);
     }
 
 

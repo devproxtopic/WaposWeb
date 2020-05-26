@@ -23,5 +23,13 @@ class PaymentController extends Controller
             echo('Pago realizado correctamente');
         
     }
+
+
+    public function paymentForm ($id)
+    {
+        $order = $id;
+
+        return view('link_payment', ['order'=>$order]);
+    }
     
 }
