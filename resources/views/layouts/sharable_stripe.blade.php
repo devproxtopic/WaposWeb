@@ -45,11 +45,16 @@
     
 
         <main class="py-4">
+        <input type="hidden" name="url_base" id="url_base" value="{{ url('') }}">
             @yield('content')
         </main>
     </div>
     <script>
     $(document).ready(function() {
+
+      var baseUrl = $('#url_base').val();
+            console.log(baseUrl);
+
 
     var stripe = Stripe('pk_test_bOwsCmDWzdS8k2SYwvX3WoIn00tK9Z5yXo');
     var elements = stripe.elements();
