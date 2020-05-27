@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Message;
 use App\Order;
+use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
+
 
 class MessageController extends Controller
 {
@@ -29,7 +31,11 @@ class MessageController extends Controller
         $transaction->ordernumber = $request['ordernumber'];
         $transaction->save();
 
-        return redirect('/negocios/orders/'.$request['ordernumber'].'/details/');
+        //return redirect('/negocios/orders/'.$request['ordernumber'].'/details/');
+        $url = "https://api.whatsapp.com/send?phone=+524443184174&text=Se ha creado un nuevo pedido, puede verlo en la siguiente url http://127.0.0.1:8000/".'/negocios/orders/'.$request['ordernumber'].'/details/';
+        return Redirect::to($url);
+
+
 
        /* $transactions = Order::all();
         return view('dashboard.transactions',['transactions'=>$transactions]);*/
