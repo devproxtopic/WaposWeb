@@ -80,5 +80,16 @@ function price_Order($order){
     
 }
 
+function currency_Order($order){
+    $order = App\Order::where('ordernumber', '=', $order)->first();
+    if ($order){
+        $customer = App\Product::where('id','=',$order->product_id)->first();
+       return $customer->currency;
+    } else {
+        return " ";
+    }
+    
+}
+
 
 ?>
