@@ -28,6 +28,8 @@
 
                                                 <form id="payment-form" method="POST" action="/charge">
                                                     @csrf
+                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                                                     <div class="form-group row">
                                                         <label class="col-md-5 col-form-label "></label>
                                                         <label class="col-md-3 col-form-label " id="title-purchase">Orden No.</label>
