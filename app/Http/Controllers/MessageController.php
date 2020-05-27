@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Message;
 use App\Order;
+use App\Buyer;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Http\Request;
 
@@ -31,8 +32,12 @@ class MessageController extends Controller
         $transaction->ordernumber = $request['ordernumber'];
         $transaction->save();
 
+        $buyer = Buyer::where('id', '=', $request['buyer_id'])->first();
+
+
         //return redirect('/negocios/orders/'.$request['ordernumber'].'/details/');
-        $url = "https://api.whatsapp.com/send?phone=+524443184174&text=Se ha creado un nuevo pedido, puede verlo en la siguiente url http://127.0.0.1:8000/".'/negocios/orders/'.$request['ordernumber'].'/details/';
+        
+        $url = "https://api.whatsapp.com/send?phone=".$buyer->ladanumber.''.$buyer->phone."&text=Se ha creado un nuevo pedido, puede verlo en la siguiente url http://wa-pos.com/".'/negocios/orders/'.$request['ordernumber'].'/details/';
         return Redirect::to($url);
 
 
