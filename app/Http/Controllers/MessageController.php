@@ -37,7 +37,7 @@ class MessageController extends Controller
 
         //return redirect('/negocios/orders/'.$request['ordernumber'].'/details/');
         
-        $url = "https://api.whatsapp.com/send?phone=".$buyer->ladanumber.''.$buyer->phone."&text=Se ha creado un nuevo pedido, puede verlo en la siguiente url http://wa-pos.com/".'/negocios/orders/'.$request['ordernumber'].'/details/';
+        $url = "https://api.whatsapp.com/send?phone=".$buyer->ladanumber.''.$buyer->phone."&text=".$request['message'].", puede verlo en la siguiente url http://wa-pos.com/".'/negocios/orders/'.$request['ordernumber'].'/details/';
         return Redirect::to($url);
 
 
