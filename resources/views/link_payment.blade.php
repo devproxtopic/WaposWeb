@@ -59,7 +59,7 @@
 
                                                     <div class="form-group row">
                                                         <div class="col-md-4">
-                                                            <input type="text" class="form-control" name="currency" id="currency" placeholder="currency" required autofocus disabled>
+                                                            <input type="text" class="form-control" name="currency" id="currency" value= {{currency_Order($order)}} placeholder="currency" required autofocus disabled>
                                                         </div>
 
                                                         <div class="col-md-8">
