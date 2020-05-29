@@ -56,7 +56,6 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ url('/general-data') }}">Editar datos</a>
                                     <a class="dropdown-item" href="{{ url('/edit-password') }}">Cambiar contraseña</a>
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

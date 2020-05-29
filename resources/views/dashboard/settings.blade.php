@@ -65,10 +65,10 @@
                                     @else
                                     <option value="+52">México +52</option>
                                     @endif
-                                    @if($business->ladanumber == '+59')
-                                    <option value="+59" selected>Uruguay +59</option>
+                                    @if($business->ladanumber == '+598')
+                                    <option value="+59" selected>Uruguay +598</option>
                                     @else
-                                    <option value="+59">Uruguay +59</option>
+                                    <option value="+59">Uruguay +598</option>
                                     @endif
 
                                 </select>
