@@ -77,7 +77,23 @@ p.w3l-register-p {
     color: #d2d2d2;
     letter-spacing: 2px;
     margin-bottom: 10px;
+}
 
+
+.verify-email-label {
+    display: block;
+    font-size: 14px;
+    color: #d2d2d2;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+}
+.verify-email-label-bold {
+    display: block;
+    font-size: 14px;
+    color: #d2d2d2;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 input[type="text"],

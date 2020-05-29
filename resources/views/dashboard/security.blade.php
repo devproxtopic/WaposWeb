@@ -12,7 +12,8 @@
                 </div>
 
                 <div class="card-body" style="color: green">
-                    <h2 class="display-3"> </h2>
+                <a class="btn btn-success" href="{{ url('/edit-password') }}">Cambiar contraseña</a>
+
                 </div>
 
 
