@@ -18,6 +18,7 @@ Route::get('/', function () {
 Auth::routes(['verify' => true]);
 Route::get('/products/product/{id}/details/', 'SharableLinkController@productLink');
 Route::get('/negocios/orders/{id}/details/', 'PaymentController@paymentForm');
+Route::post('/dashboard/transactions/create', 'OrderController@createTransaction');
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/home', 'HomeController@index');
@@ -43,7 +44,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/dashboard/files/update', 'BusinessController@updateFiles');
 
     Route::get('/dashboard/transactions', 'OrderController@dashboardTransactionsView');
-    Route::post('/dashboard/transactions/create', 'OrderController@createTransaction');
+    
     Route::get('/dashboard/pos', 'BusinessController@dashboardPOSView');
     Route::get('/dashboard/BankInformation', 'BusinessController@dashboardBankDataView');
     Route::get(' /dashboard/clients', 'BuyerController@dashboardClientsView');
