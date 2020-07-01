@@ -4,10 +4,23 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Order;
+use Illuminate\Support\Facades\Log;
+use App\Http\Requests;
 
 class OrderController extends Controller
 {
     //
+    public function handle(Request $request){
+        Log::info($request);
+        return ($request);
+
+    }
+    public function billPocketRedirect(Request $request){
+       
+        return "Aquí será el redireccionamiento";
+
+    }
+    
     public function dashboardTransactionsView(Request $request){
 
        

@@ -28,7 +28,7 @@ class PaymentController extends Controller
     public function paymentForm ($id)
     {
         $order = $id;
-
+        
         return view('link_payment', ['order'=>$order]);
     }
     
