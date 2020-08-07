@@ -296,10 +296,6 @@
 
       });
 
-
-      
-     
-      
     });
   </script>
   <script>
@@ -311,8 +307,11 @@
     
 
     function messagePOS(name, price, business_name) {
-      $('#message').val("Hola "+ name +" soy Paula, tu asistente de pago de WAPOS. Hemos generado el siguiente enlace para que realice tu pago a "+ business_name +" de forma segura, por el importe de $" +$product["price"]+".00");
+      $('#message').val("Hola "+ name +" soy Paula, tu asistente de pago de wapido. Hemos generado el siguiente enlace para que realices tu pago a través de billpocket de forma segura, por el importe de $" +$product["price"]+".00");
+
+      //$('#message').val("Hola "+ name +" soy Paula, tu asistente de pago de WAPOS. Hemos generado el siguiente enlace para que realices tu pago a "+ business_name +" de forma segura, por el importe de $" +$product["price"]+".00");
     }
+
 
 
     function checkPhoneNumber(e) {

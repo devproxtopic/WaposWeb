@@ -1,125 +1,118 @@
-@extends('layouts.sharable_stripe')
+@extends('layouts.payment_sharable')
 
 @section('content')
-<div class="container">
-    <section id="team" class="team">
-        <div class="container">
 
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title" data-aos="fade-right">
-                        <h2>WAPOS</h2>
-                        <p>Proxtopic te ha enviado una solicitud de pago.</p>
-                    </div>
-                </div>
-                <div class="col-lg-12">
-                    <div class="row">
-
-                        <div class="col-lg-12">
-                            <div class="member row">
-                                <div class="member-info col-lg-12">
-                                    <h1>Formulario de Pago</h1>
-
-
-                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
-                                        <div class="modal-content">
-                                           
-                                            <div class="modal-body">
-
-                                                <form id="payment-form" method="POST" action="/charge">
-                                                    @csrf
-                                                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-
-                                                    <div class="form-group row">
-                                                        <label class="col-md-5 col-form-label "></label>
-                                                        <label class="col-md-3 col-form-label " id="title-purchase">Orden No.</label>
-                                                        <input for="orderno" name="orderno" id="orderno"  value={{$order}} class=" form-control col-md-2 col-form-label text-align-right" require autofocus disabled>
-                                                    </div>
-
-                                                    <div class="form-group row ">
-                                                        <label for="client" class="col-md-4 col-form-label " id="title-purchase">Cliente</label>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <div class="col-md-12">
-                                                            <input type="text" class="form-control" name="name" id="name"  value=" {{customer_Order($order)}}" placeholder="Nombre del cliente" required autofocus disabled>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <div class="col-md-4">
-                                                            <input type="text" class="form-control" name="ladanumber" id="ladanumber"   value="{{customer_lada_Order($order)}}" placeholder="lada" required autofocus disabled>
-                                                        </div>
-                                                        <div class="col-md-8">
-                                                            <input type="text" class="form-control" name="phone" id="phone" value="{{customer_phone_Order($order)}}" placeholder="phone" required autofocus disabled>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="form-group row ">
-                                                        <label for="country_id" class="col-md-4 col-form-label " id="title-purchase">Precio</label>
-                                                    </div>
-
-                                                    <div class="form-group row">
-                                                        <div class="col-md-4">
-                                                            <input type="text" class="form-control" name="currency" id="currency" value= {{currency_Order($order)}} placeholder="currency" required autofocus disabled>
-                                                        </div>
-
-                                                        <div class="col-md-8">
-                                                            <input type="text" class="form-control" value="${{price_Order($order)}}.00" name="amount" id="amount" required autofocus disabled>
-                                                            <input type="hidden" class="form-control" value="{{price_Order($order)}}"  name="amount_db" id="amount_db" required autofocus>
-
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="form-group row">
-                                                        <div class="col-md-5">
-                                                            <label for="card-element" id="title-purchase">
-                                                                Credit or debit card
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <div class="col-md-12">
-                                                            <div style="width: 30em" id="card-element">
-                                                                <!-- A Stripe Element will be inserted here. -->
-                                                            </div>
-
-                                                            <!-- Used to display Element errors. -->
-                                                            <div id="card-errors" role="alert"></div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="modal-footer">
-                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                        <button type="submit" class="btn btn-success">Pagar</button>
-                                                    </div>
-                                                </form>
-                                                <script src="https://js.stripe.com/v3/"></script>
-                                            </div>
-                                        </div>
-                                    </div>
-
-
-
-
-
-
-
-
-
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </div>
-
-            </div>
+<div class="checkout">
+  <div class="credit-card-box">
+    <div class="flip">
+      <div class="front">
+        <div class="chip"></div>
+        <div class="logo">
+          <svg version="1.1" id="visa" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               width="47.834px" height="47.834px" viewBox="0 0 47.834 47.834" style="enable-background:new 0 0 47.834 47.834;">
+            <g>
+              <g>
+                <path d="M44.688,16.814h-3.004c-0.933,0-1.627,0.254-2.037,1.184l-5.773,13.074h4.083c0,0,0.666-1.758,0.817-2.143
+                         c0.447,0,4.414,0.006,4.979,0.006c0.116,0.498,0.474,2.137,0.474,2.137h3.607L44.688,16.814z M39.893,26.01
+                         c0.32-0.819,1.549-3.987,1.549-3.987c-0.021,0.039,0.317-0.825,0.518-1.362l0.262,1.23c0,0,0.745,3.406,0.901,4.119H39.893z
+                         M34.146,26.404c-0.028,2.963-2.684,4.875-6.771,4.875c-1.743-0.018-3.422-0.361-4.332-0.76l0.547-3.193l0.501,0.228
+                         c1.277,0.532,2.104,0.747,3.661,0.747c1.117,0,2.313-0.438,2.325-1.393c0.007-0.625-0.501-1.07-2.016-1.77
+                         c-1.476-0.683-3.43-1.827-3.405-3.876c0.021-2.773,2.729-4.708,6.571-4.708c1.506,0,2.713,0.31,3.483,0.599l-0.526,3.092
+                         l-0.351-0.165c-0.716-0.288-1.638-0.566-2.91-0.546c-1.522,0-2.228,0.634-2.228,1.227c-0.008,0.668,0.824,1.108,2.184,1.77
+                         C33.126,23.546,34.163,24.783,34.146,26.404z M0,16.962l0.05-0.286h6.028c0.813,0.031,1.468,0.29,1.694,1.159l1.311,6.304
+                         C7.795,20.842,4.691,18.099,0,16.962z M17.581,16.812l-6.123,14.239l-4.114,0.007L3.862,19.161
+                         c2.503,1.602,4.635,4.144,5.386,5.914l0.406,1.469l3.808-9.729L17.581,16.812L17.581,16.812z M19.153,16.8h3.89L20.61,31.066
+                         h-3.888L19.153,16.8z"/>
+              </g>
+            </g>
+          </svg>
         </div>
+        <div class="number"></div>
+        <div class="card-holder">
+          <label>JUAN LOPEZ</label>
+          <div></div>
+        </div>
+        <div class="card-expiration-date">
+          <label>10/25</label>
+          <div></div>
+        </div>
+      </div>
+      <div class="back">
+        <div class="strip"></div>
+        <div class="logo">
+          <svg version="1.1" id="visa" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               width="47.834px" height="47.834px" viewBox="0 0 47.834 47.834" style="enable-background:new 0 0 47.834 47.834;">
+            <g>
+              <g>
+                <path d="M44.688,16.814h-3.004c-0.933,0-1.627,0.254-2.037,1.184l-5.773,13.074h4.083c0,0,0.666-1.758,0.817-2.143
+                         c0.447,0,4.414,0.006,4.979,0.006c0.116,0.498,0.474,2.137,0.474,2.137h3.607L44.688,16.814z M39.893,26.01
+                         c0.32-0.819,1.549-3.987,1.549-3.987c-0.021,0.039,0.317-0.825,0.518-1.362l0.262,1.23c0,0,0.745,3.406,0.901,4.119H39.893z
+                         M34.146,26.404c-0.028,2.963-2.684,4.875-6.771,4.875c-1.743-0.018-3.422-0.361-4.332-0.76l0.547-3.193l0.501,0.228
+                         c1.277,0.532,2.104,0.747,3.661,0.747c1.117,0,2.313-0.438,2.325-1.393c0.007-0.625-0.501-1.07-2.016-1.77
+                         c-1.476-0.683-3.43-1.827-3.405-3.876c0.021-2.773,2.729-4.708,6.571-4.708c1.506,0,2.713,0.31,3.483,0.599l-0.526,3.092
+                         l-0.351-0.165c-0.716-0.288-1.638-0.566-2.91-0.546c-1.522,0-2.228,0.634-2.228,1.227c-0.008,0.668,0.824,1.108,2.184,1.77
+                         C33.126,23.546,34.163,24.783,34.146,26.404z M0,16.962l0.05-0.286h6.028c0.813,0.031,1.468,0.29,1.694,1.159l1.311,6.304
+                         C7.795,20.842,4.691,18.099,0,16.962z M17.581,16.812l-6.123,14.239l-4.114,0.007L3.862,19.161
+                         c2.503,1.602,4.635,4.144,5.386,5.914l0.406,1.469l3.808-9.729L17.581,16.812L17.581,16.812z M19.153,16.8h3.89L20.61,31.066
+                         h-3.888L19.153,16.8z"/>
+              </g>
+            </g>
+          </svg>
 
+        </div>
+        <div class="ccv">
+          <label>CCV</label>
+          <div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <form id="payment-form" class="form" method="POST" action="/charge">
+  @csrf
+   <input type="hidden" name="_token" value="{{ csrf_token() }}">
+    <fieldset class="form-group row">
+      <label class="col-md-3 col-form-label " id="title-purchase">Orden No.</label>
+      <input for="orderno" name="orderno" id="orderno"  value={{$order}} class=" form-control col-md-2 col-form-label text-align-right" require autofocus disabled>
+    </fieldset>
+
+    <fieldset>
+      <label for="client" class="col-md-4 col-form-label " id="title-purchase">Cliente</label>
+      <input type="text" class="form-control" name="name" id="name"  value=" {{customer_Order($order)}}" placeholder="Nombre del cliente" required autofocus disabled>
+    </fieldset>
+
+    <fieldset>
+      <div class="form-group row">
+        <div class="col-md-4">
+            <input type="text" class="form-control" name="ladanumber" id="ladanumber"   value="{{customer_lada_Order($order)}}" placeholder="lada" required autofocus disabled>
+        </div>
+        <div class="col-md-8">
+            <input type="text" class="form-control" name="phone" id="phone" value="{{customer_phone_Order($order)}}" placeholder="phone" required autofocus disabled>
+        </div>
+    </fieldset>
+
+    <fieldset>
+      <label for="country_id" class="col-md-4 col-form-label " id="title-purchase">Precio</label>
+      <input type="text" class="form-control" name="currency" id="currency" value= "{{currency_Order($order)}}" placeholder="currency" required autofocus disabled>
+      <input type="text" class="form-control" value="${{price_Order($order)}}.00" name="amount" id="amount" required autofocus disabled>
+      <input type="hidden" class="form-control" value="{{price_Order($order)}}"  name="amount_db" id="amount_db" required autofocus>
+
+    </fieldset>
+    <fieldset>
+      <div class="form-group row">
+        <div class="col-md-12">
+          <!-- A Stripe Element will be inserted here. -->
+          <div style="width: 30em" id="card-element"></div>
+                
+          
+            <!-- Used to display Element errors. -->
+            <div id="card-errors" role="alert"></div>
+        </div>
+    </div>
+    </fieldset>
+    <button type="submit" class="btn"><i class="fa fa-lock"></i> Pagar</button>
+  </form>
+  <script src="https://js.stripe.com/v3/"></script>
 </div>
-</section><!-- End Team Section -->
+
 </div>
 @endsection

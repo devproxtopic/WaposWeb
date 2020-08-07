@@ -21,6 +21,8 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         //
         '/negocios/orders/{id}/details/',
-        '/dashboard/transactions/create',
+        '/dashboard/transactions/create' ,
+        '/checkout/shipping',
+        '/checkout/purchase',
     ];
 }
