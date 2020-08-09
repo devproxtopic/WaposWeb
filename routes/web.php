@@ -26,7 +26,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/', 'HomeController@index')->name('home');
     Route::get('/home', 'HomeController@index');
 
-   
+
 
 
     Route::get('/general-data', 'UserController@generalDataView');
@@ -35,9 +35,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/dashboard/products/create', 'ProductController@createProduct');
     Route::get('/buyers/{id}', 'BuyerController@buyer');
     Route::get('/products/{id}', 'ProductController@product');
-    Route::get('/products/{id}', 'ProductController@product');
+    // Route::get('/products/{id}', 'ProductController@product');
     Route::post('/messages/create', 'MessageController@create');
-    
+
     Route::get('/dashboard/myBusiness', 'BusinessController@index');
     Route::get('/dashboard/banks', 'BusinessController@dashboardBusinessBankView');
     Route::get(' /dashboard/simulator', 'BusinessController@dashboardSimulatorView');
@@ -47,15 +47,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/dashboard/files/update', 'BusinessController@updateFiles');
 
     Route::get('/dashboard/transactions', 'OrderController@dashboardTransactionsView');
-    
+
     Route::get('/dashboard/pos', 'BusinessController@dashboardPOSView');
     Route::get('/dashboard/BankInformation', 'BusinessController@dashboardBankDataView');
     Route::get(' /dashboard/clients', 'BuyerController@dashboardClientsView');
-
-
-   
-
-   
 
     Route::get('/dashboard/Security', 'BusinessController@dashboardSecurityView');
 
@@ -71,7 +66,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/dashboard/business/create', 'BusinessController@store');
     Route::post('/dashboard/business/update', 'BusinessController@update');
     Route::post('/dashboard/clients/create', 'BuyerController@store');
-
 
     Route::put('/update-admin-data/{user}', 'UserController@updateAdminData')
         ->name('update.admin_users');
@@ -89,4 +83,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('logout', 'Auth\LoginController@logout', function () {
         return abort(404);
     });
+
+    Route::get('/dashboard/orders/create', 'OrderController@create');
+    Route::post('/dashboard/orders/create', 'OrderController@store');
 });
