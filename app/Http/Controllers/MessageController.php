@@ -74,37 +74,40 @@ class MessageController extends Controller
         }
 
         ///
-    $ch = curl_init();
-    curl_setopt($ch, CURLOPT_URL, "https://test.paywith.billpocket.com/api/v1/checkout");
-    $body = '{
-        "apiKey": "44HWTCR-DRK47ES-NX6YTBW-BYD66QF",
-        "externalID": "",
-        "items" : [],
-        "total": '.$request['price'].'
-    }';
+    // $ch = curl_init();
+    // curl_setopt($ch, CURLOPT_URL, "https://test.paywith.billpocket.com/api/v1/checkout");
+    // $body = '{
+    //     "apiKey": "44HWTCR-DRK47ES-NX6YTBW-BYD66QF",
+    //     "externalID": "",
+    //     "items" : [],
+    //     "total": '.$request['price'].'
+    // }';
 
-    curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-    curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
-    curl_setopt($ch, CURLOPT_POSTFIELDS,$body);
-    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-    // Timeout in seconds
-    curl_setopt($ch, CURLOPT_TIMEOUT, 30);
+    // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
+    // curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+    // curl_setopt($ch, CURLOPT_POSTFIELDS,$body);
+    // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    // // Timeout in seconds
+    // curl_setopt($ch, CURLOPT_TIMEOUT, 30);
 
-    $authToken = curl_exec($ch);
+    // $authToken = curl_exec($ch);
 
-    $final_response = json_decode($authToken, true);
-    $urlBillPocket = "https://test.paywith.billpocket.com/checkout/".$final_response ['checkoutId'];
+    // $final_response = json_decode($authToken, true);
+    // $urlBillPocket = "https://test.paywith.billpocket.com/checkout/".$final_response ['checkoutId'];
     //return $urlBillPocket;
 
         ///
         //return redirect('/negocios/orders/'.$request['ordernumber'].'/details/');
 
-        $url = "https://api.whatsapp.com/send?phone=".$buyer->ladanumber.''.$buyer->phone."&text=".$request['message'].", puede verlo en la siguiente url ".$urlBillPocket. " o en el siguiente enlace   https://wa-pos.com/".'/negocios/orders/'.$request['ordernumber'].'/details/';
+        $url = "https://api.whatsapp.com/send?phone=".
+        $buyer->ladanumber.''.$buyer->phone.
+        "&text=".$request['message'].
+        ", puede verlo en la siguiente url https://wa-pos.com/".'/negocios/orders/'.$request['ordernumber'].'/details/';
         return Redirect::to($url);
 
 
 
-       /* $transactions = Order::all();
+        /* $transactions = Order::all();
         return view('dashboard.transactions',['transactions'=>$transactions]);*/
     }
 }
