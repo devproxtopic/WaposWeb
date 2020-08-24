@@ -14,7 +14,10 @@ class RemoveProductIdFromOrders extends Migration
     public function up()
     {
         Schema::table('orders', function (Blueprint $table) {
+            $table->dropForeign('orders_product_id_foreign');
             $table->dropColumn('product_id');
+            $table->dropForeign('orders_buyer_id_foreign');
+            $table->bigInteger('buyer_id')->nullable()->change();
         });
     }
 
@@ -27,6 +30,7 @@ class RemoveProductIdFromOrders extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->bigInteger('product_id')->unsigned();
+            $table->foreign('product_id')->references('id')->on('products');
         });
     }
 }

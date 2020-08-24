@@ -8,47 +8,49 @@
             <div class="card">
 
                 <div class="card-header">
-                    <h3 id="subtitle-dashboard-wapos">Transacciones</h3>
+                    <h3 id="subtitle-dashboard-wapos">Ordenes</h3>
+                        <div class="text-right">
+                            <a href="{{ url('dashboard/orders/create') }}" class="btn btn-success">
+                                Crear nueva orden
+                            </a>
+                        </div>
                 </div>
 
                 <div class="card-body" style="color: green">
                     <table class="table" id="datatable" >
                         <thead class="table">
-                            <th scope="col">Fecha</th>
-                            <th scope="col">Orden</th>
-                            <th scope="col">Cliente</th>
-                            <th scope="col">Producto</th>
-                            <th scope="col">Monto</th>
-                            <th scope="col">Estatus</th>
-                            <th scope="col">Info</th>
-                            <th style="display:none;">Info</th>
-                            <th style="display:none;">Info</th>
-
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Fecha</th>
+                                <th scope="col">Cliente</th>
+                                <th scope="col">Monto</th>
+                                <th scope="col">Estatus</th>
+                                <th scope="col">Info</th>
+                                <th style="display:none;">Info</th>
+                                <th style="display:none;">Info</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($transactions as $transaction)
+                            @foreach($orders as $order)
                             <tr>
-                                <td>{{ $transaction->created_at }}</td>
-                                <td>{{ $transaction->ordernumber }}</td>
-                                <td>{{ getFullName($transaction->buyer_id) }}</td>
-                                <td>{{ getProductName($transaction->product_id) }}</td>
-                                <td>{{ $transaction->amount }}</td>
-                                @if($transaction->status)
-                                @switch($transaction->status_id){{-- Status = 1 -> Completo --}}
+                                <td>{{ $order->ordernumber }}</td>
+                                <td>{{ $order->created_at->format('d-m-Y') }}</td>
+                                <td>{{ getFullName($order->buyer_id) }}</td>
+                                <td>{{ $order->amount }}</td>
+                                @if($order->transaction)
+                                @switch($order->transaction->status_id){{-- Status = 1 -> Completo --}}
                                 @case(1)
-                                <td style="color: green">{{ $transaction->status->name }}</td>
+                                <td style="color: green">{{ $order->transaction->status->name }}</td>
                                 @break
                                 @case(2) {{-- Status = 2 -> Pendiente --}}
-                                <td style="color: orange">{{ $transaction->status->name }}</td>
-                                @break
+                                <td style="color: orange">{{ $order->transaction->status->name }}</td>
                                 @break
                                 @endswitch
                                 @else
                                 <td></td>
                                 @endif
-                                <td style="display:none;">{{ getFullBuyer($transaction->buyer_id) }}</td>
-                                <td style="display:none;">{{ getProductInformation($transaction->product_id) }}</td>
+                                <td style="display:none;">{{ getFullBuyer($order->buyer_id) }}</td>
+                                <td style="display:none;">{{ getProductInformation($order->product_id) }}</td>
                                 <td><a class="badge badge-success edit">Info</a></td>
 
                             </tr>
@@ -128,16 +130,6 @@
                             <input type="text"  disabled class="form-control" name="price" id="price" placeholder="price" required autofocus>
                         </div>
                     </div>
-
-
-
-
-
-
-
-
-
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-success" data-dismiss="modal">Cerrar</button>
@@ -147,7 +139,6 @@
     </div>
 </div>
 
-
 @stop
 
 @section('scripts')
@@ -155,24 +146,24 @@
 $(document).ready(function() {
     var table = $('#datatable').DataTable();
     table.on('click', '.edit', function() {
-        var tr = $(this).closest('tr');
-        if ($(tr).hasClass('child')) {
-            tr = tr.prev('.parent');
+        $tr = $(this).closest('tr');
+        if ($($tr).hasClass('child')) {
+            $tr = $tr.prev('.parent');
         }
 
-        var data = table.row(tr).data();
+        var data = table.row($tr).data();
         console.log(data);
-        var userFields = JSON.parse(data[6]);
-        var productFields = JSON.parse(data[7]);
+        $userFields = JSON.parse(data[6]);
+        $productFields = JSON.parse(data[7]);
 
         $('#product_id').val(data[3]);
         $('#ordernumber').text(data[1]);
-        $('#name').val(userFields["name"]);
-        $('#phone').val(userFields["phone"]);
-        $('#product_name').val(productFields["title"]);
-        $('#currency').val(productFields["currency"]);
-        $('#description').val(productFields["description"]);
-        $('#price').val('$' + productFields["price"]);
+        $('#name').val($userFields["name"]);
+        $('#phone').val($userFields["phone"]);
+        $('#product_name').val($productFields["title"]);
+        $('#currency').val($productFields["currency"]);
+        $('#description').val($productFields["description"]);
+        $('#price').val('$' + $productFields["price"]);
         $('#editModal').modal('show');
     });
 });

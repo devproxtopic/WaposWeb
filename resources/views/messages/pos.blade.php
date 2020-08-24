@@ -19,10 +19,10 @@
 
                             <div class="col-md-6">
                                 <select name="buyer_id" class="form-control client-select-pos" >
-                                    <option value="" name="buyer_id">Seleccionar</option>
-                                    <option value="0" name="buyer_id">Registrar nuevo cliente</option>
+                                    <option value="">Seleccionar</option>
+                                    <option value="0">Registrar nuevo cliente</option>
                                     @foreach($buyers as $buyer)
-                                    <option value="{{$buyer->id}}" name="buyer_id" > {{$buyer->name}}  </option>
+                                    <option value="{{ $buyer->id }}"> {{ $buyer->name }} </option>
                                     @endforeach
                                 </select>
                             </div>
@@ -67,7 +67,8 @@
                             </div>
                             <div class="col-md-3">
                                 <input readonly type="number" class="form-control client_data" name="phone"
-                                id="phone" placeholder="Número*" required autofocus>
+                                onkeypress="return checkPhoneNumber(event)"  id="phone-number-client"
+                                placeholder="Número*" required autofocus>
                             </div>
                         </div>
 

@@ -72,7 +72,7 @@ class BusinessController extends Controller
     public function successTransactionsView(){
         return view('dashboard.successTransactions');
     }
-    
+
     public function failedTransactionsView(){
         return view('dashboard.failTransactions');
     }
@@ -108,7 +108,7 @@ class BusinessController extends Controller
 
         return view('dashboard.files',['business'=>$business]);
     }
-   
+
     public function dashboardPOSView(){
         $buyers = Buyer::all();
         $products = Product::all();
@@ -129,8 +129,8 @@ class BusinessController extends Controller
         $transactions = Order::where('transaction_status','=','Pendiente')->get();
         return view('dashboard.simulator',['transactions'=>$transactions]);
     }
-   
 
-    
-    
+
+
+
 }
