@@ -81,4 +81,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/dashboard/orders', 'OrderController@index');
     Route::get('/dashboard/orders/create', 'OrderController@create');
     Route::post('/dashboard/orders/create', 'OrderController@store');
+
+    Route::get('/dashboard/stats-deposits', 'StatsController@deposits');
 });

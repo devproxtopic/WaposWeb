@@ -23,6 +23,7 @@
         <h3 class="menu-title">Mi Negocio</h3><!-- /.menu-title -->
         <li class="active">
             <a href="{{ url('/dashboard/orders')}}"> <img class="menu-icon" src="{{ URL::asset('images/bill.png')}}" alt="Logo">Ordenes</a>
+            <a href="{{ url('/dashboard/stats-deposits')}}"> <img class="menu-icon" src="{{ URL::asset('images/bill.png')}}" alt="Logo">Estadísticas</a>
             <!--<a href="{{ url('/dashboard/myBusiness')}}"> <i class="menu-icon fa fa-arrow-up"></i>Ver</a>
                     <a href="{{ url('/dashboard/transactions/failed') }}"> <i class="menu-icon fa  fa-arrow-down"></i>Inválidas</a>-->
             <a href="{{ url('/dashboard/clients')}}"> <img class="menu-icon" src="{{ URL::asset('images/customer.png')}}" alt="Logo">Clientes</a>
